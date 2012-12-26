@@ -24,6 +24,12 @@ Example:
 We're completing **persian.js**, if you need other functionalities, please create a issue on this repository and let us know that.  
 We will implement that as soon as possible!
 
+##Contributors
+[Afshin Mehrabani](https://github.com/afshinm) (@afshinmeh)  
+Armin Ebrahimi (@Arm1nE)  
+Nima Shayafar (@nimolix)  
+Soheil (@soheilbro)
+
 ##Contributing
 
 This is a open-source project. Fork the project, complete the code and send pull request.
