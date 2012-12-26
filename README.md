@@ -7,7 +7,10 @@ A simple JavaScript library for Persian language localization.
 Simply include `persian.js` in your HTML page and use the functions.   
 If your in production environment, use `persian.min.js` instead.
 
-##Safe Persian Characters
+##Functions
+
+###1) Safe Persian Characters
+----------
 Used for converting Arabic characters to Persian.
 
 Example:
@@ -15,6 +18,11 @@ Example:
 ```javascript
 "علي".toPersian(); //returns: علی
 ````
+
+###2) ?
+----------
+We're completing **persian.js**, if you need other functionalities, please create a issue on this repository and let us know that.  
+We will implement that as soon as possible!
 
 ##Contributing
 
