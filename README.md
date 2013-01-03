@@ -30,6 +30,7 @@ We will implement that as soon as possible!
 Armin Ebrahimi (@Arm1nE)  
 Nima Shayafar (@nimolix)  
 Soheil (@soheilbro)
+Bersam Karbasion (http://bersam.org) (@b3rsam)
 
 ##Contributing
 
