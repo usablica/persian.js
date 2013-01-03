@@ -11,12 +11,13 @@ If your in production environment, use `persian.min.js` instead.
 
 ###1) Safe Persian Characters
 ----------
-Used for converting Arabic characters to Persian.
+Used for converting Arabic characters and numbers to Persian.
 
 Example:
 
 ```javascript
 "علي".toPersian(); //returns: علی
+"٣٤٥".toPersian(); //returns: ۳۴۵
 ````
 
 ###2) ?
@@ -29,6 +30,7 @@ We will implement that as soon as possible!
 Armin Ebrahimi (@Arm1nE)  
 Nima Shayafar (@nimolix)  
 Soheil (@soheilbro)
+Bersam Karbasion (http://bersam.org) (@b3rsam)
 
 ##Contributing
 
