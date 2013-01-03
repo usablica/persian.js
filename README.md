@@ -29,8 +29,8 @@ We will implement that as soon as possible!
 [Afshin Mehrabani](https://github.com/afshinm) (@afshinmeh)  
 Armin Ebrahimi (@Arm1nE)  
 Nima Shayafar (@nimolix)  
-Soheil (@soheilbro)
-Bersam Karbasion (http://bersam.org) (@b3rsam)
+Soheil (@soheilbro)  
+[Bersam Karbasion](http://bersam.org) (@b3rsam)
 
 ##Contributing
 
