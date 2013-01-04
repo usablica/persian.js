@@ -26,11 +26,13 @@ We're completing **persian.js**, if you need other functionalities, please creat
 We will implement that as soon as possible!
 
 ##Contributors
-[Afshin Mehrabani](https://github.com/afshinm) (@afshinmeh)  
+[Afshin Mehrabani](https://afshinm.name/) (@afshinmeh)  
 Armin Ebrahimi (@Arm1nE)  
 Nima Shayafar (@nimolix)  
 Soheil (@soheilbro)  
-[Bersam Karbasion](http://bersam.org) (@b3rsam)
+[Bersam Karbasion](http://bersam.org) (@b3rsam)  
+
+**And special thanks** to [Sallar Kaboli](http://sallar.me/) (@sallar)
 
 ##Contributing
 
