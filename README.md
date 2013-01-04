@@ -26,7 +26,7 @@ We're completing **persian.js**, if you need other functionalities, please creat
 We will implement that as soon as possible!
 
 ##Contributors
-[Afshin Mehrabani](https://afshinm.name/) (@afshinmeh)  
+[Afshin Mehrabani](http://afshinm.name/) (@afshinmeh)  
 Armin Ebrahimi (@Arm1nE)  
 Nima Shayafar (@nimolix)  
 Soheil (@soheilbro)  
