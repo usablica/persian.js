@@ -13,7 +13,7 @@ If your in production environment, use `persian.min.js` instead.
 
 ##Functions
 
-###1) To Persian Characters
+###1) Convert to Persian characters
 ----------
 Used for converting Arabic characters to Persian.
 
@@ -23,7 +23,7 @@ Example:
 persianJs("علي").toPersianChar(); //returns: علی
 ````
 
-###2) To Persian Characters
+###2) Convert to Persian numbers
 ----------
 Used for converting Arabic numbers to Persian.
 
