@@ -50,6 +50,11 @@ We will implement that as soon as possible!
 
 This is a open-source project. Fork the project, complete the code and send pull request.
 
+##Getting support
+
+- Google Groups [forum](http://groups.google.com/group/persianJs)
+- Report [bug/issues](https://github.com/usablica/persian.js/issues)
+
 ##License
 
     Copyright (C) 2012 Afshin Mehrabani (afshin.meh@gmail.com)
