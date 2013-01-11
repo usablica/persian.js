@@ -1,38 +1,50 @@
 Persian.js
 =========
 
-A simple JavaScript library for Persian language localization.
+A simple JavaScript library for Persian language localization.  
+[![Build Status](https://travis-ci.org/usablica/persian.js.png?branch=master)](https://travis-ci.org/usablica/persian.js)
 
 ##How to use
 Simply include `persian.js` in your HTML page and use the functions.   
 If your in production environment, use `persian.min.js` instead.
 
+###In Node.js
+    npm install persianjs
+
 ##Functions
 
-###1) Safe Persian Characters
+###1) To Persian Characters
 ----------
-Used for converting Arabic characters and numbers to Persian.
+Used for converting Arabic characters to Persian.
 
 Example:
 
 ```javascript
-"علي".toPersian(); //returns: علی
-"٣٤٥".toPersian(); //returns: ۳۴۵
+persianJs("علي").toPersianChar(); //returns: علی
 ````
 
-###2) ?
+###2) To Persian Characters
+----------
+Used for converting Arabic numbers to Persian.
+
+Example:
+
+```javascript
+persianJs("٣٤٥").toPersianNumber(); //returns: ۳۴۵
+````
+
+###3) ?
 ----------
 We're completing **persian.js**, if you need other functionalities, please create a issue on this repository and let us know that.  
 We will implement that as soon as possible!
 
 ##Contributors
-[Afshin Mehrabani](http://afshinm.name/) (@afshinmeh)  
-Armin Ebrahimi (@Arm1nE)  
-Nima Shayafar (@nimolix)  
-Soheil (@soheilbro)  
-[Bersam Karbasion](http://bersam.org) (@b3rsam)  
-
-**And special thanks** to [Sallar Kaboli](http://sallar.me/) (@sallar)
+[Afshin Mehrabani](http://afshinm.name/)  
+[Sallar Kaboli](http://sallar.me/)  
+[Armin Ebrahimi](http://netso.io/)  
+[Nima Shayafar](http://blog.phpmystery.com/)  
+[Soheil Rashidi](http://soheilrashidi.com/)  
+[Bersam Karbasion](http://bersam.org)
 
 ##Contributing
 
