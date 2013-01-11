@@ -1,0 +1,47 @@
+{
+    "name": "persianJs",
+    "version": "0.1.0",
+    "description": "Persian language localization.",
+    "homepage": "https://github.com/usablica/persian.js",
+    "author": "Afshin Mehrabani <afshin.meh@gmail.com> (http://afshinm.name/)",
+    "contributors": [
+        "Sallar Kaboli (http://sallar.me/)",
+        "Armin Ebrahimi (http://netso.io/)",
+        "Nima Shayafar (http://blog.phpmystery.com/)",
+        "Soheil Rashidi (http://soheilrashidi.com/)",
+        "Bersam Karbasion (http://bersam.org/)"
+    ],
+    "keywords": [
+        "persian",
+        "farsi",
+        "arabic",
+        "english",
+        "culture",
+        "localization",
+        "i18n",
+        "l10n"
+    ],
+    "main": "./persianJs.js",
+    "engines": {
+        "node": "*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/usablica/persian.js.git"
+    },
+    "bugs": {
+        "url": "https://github.com/usablica/persian.js/issues"
+    },
+    "licenses" : [
+        {
+            "type" : "MIT"
+        }
+    ],
+    "devDependencies": {
+        "mocha": "*"
+    },
+    "scripts": {
+        "test": "make test"
+    },
+    "ender": "./ender.js"
+}
