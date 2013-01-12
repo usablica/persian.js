@@ -26,7 +26,7 @@
      */
     function _toPersianChar(value) {
         if (!value) {
-            return;
+            return value;
         }
         var arabicChars = ["ي", "ك", "‍", "دِ", "بِ", "زِ", "ذِ", "ِشِ", "ِسِ", "‌", "ى"],
             persianChars = ["ی", "ک", "", "د", "ب", "ز", "ذ", "ش", "س", "", "ی"];
@@ -46,7 +46,7 @@
      */
     function _toPersianNumber(value) {
         if (!value) {
-            return;
+            return value;
         }
         var arabicNumbers = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "٠"],
             persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"];
@@ -57,11 +57,8 @@
         return value;
     }
 
-    var persianJs = function(inputStr) {
-        if (inputStr == "" || inputStr == null) {
-            return null;
-        }
-        return new PersianJs(inputStr);
+    var persianJs = function(str) {
+        return str ? new PersianJs(str) : str;
     }
     
     //Version
