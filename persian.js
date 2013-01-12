@@ -6,7 +6,8 @@
  * Copyright (C) 2012 usabli.ca and other contributors
  */
 (function () {
-
+	"use strict";
+	
     //Default config/variables
     var VERSION = "0.1.0",
         //Check for nodeJS
