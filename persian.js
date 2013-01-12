@@ -10,7 +10,23 @@
     //Default config/variables
     var VERSION = "0.1.0",
         //Check for nodeJS
-        hasModule = (typeof module !== 'undefined' && module.exports);
+        hasModule = (typeof module !== 'undefined' && module.exports),
+        // Farsi letters and equal not farsi letters
+        letters = [
+            {fa: "ی", nf: "ي"},
+            {fa: "ک", nf: "ﻙ"},
+            {fa:  "", nf: "‍"},
+            {fa: "ﺩ", nf: "ﺩِ"},
+            {fa: "ﺏ", nf: "ﺏِ"},
+            {fa: "ﺯ", nf: "ﺯِ"},
+            {fa: "ﺫ", nf: "ﺫِ"},
+            {fa: "ﺵ", nf: "ﺵِ"},
+            {fa: "ﺱ", nf: "ﺱِ"},
+            {fa:  "", nf: "‌"},
+            {fa: "۴", nf: "٤"},
+            {fa: "۵", nf: "٥"},
+            {fa: "۶", nf: "٦"}
+        ];
 
     //PersianJs main function/constructor, used for prototype.
     function PersianJs(str) {
@@ -18,41 +34,16 @@
     }
 
     /**
-     * Used for convert Arabic characters to Persian
+     * Used for convert Arabic/English characters and numbers to Persian
      *
      * @param {String} value 
      * @return {String} Returns Converted string
      * @api private
      */
-    function _toPersianChar(value) {
-        if (!value) {
-            return value;
-        }
-        var arabicChars = ["ي", "ك", "‍", "دِ", "بِ", "زِ", "ذِ", "ِشِ", "ِسِ", "‌", "ى"],
-            persianChars = ["ی", "ک", "", "د", "ب", "ز", "ذ", "ش", "س", "", "ی"];
+    function _toPersian(value) {
 
-        for (var i = 0, charsLen = arabicChars.length; i < charsLen; i++) {
-            value = value.replace(new RegExp(arabicChars[i], "g"), persianChars[i]);
-        }
-        return value;
-    }
-
-    /**
-     * Used for convert Arabic numbers to Persian
-     *
-     * @param {String} value 
-     * @return {String} Returns Converted numbers
-     * @api private
-     */
-    function _toPersianNumber(value) {
-        if (!value) {
-            return value;
-        }
-        var arabicNumbers = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "٠"],
-            persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"];
-
-        for (var i = 0, numbersLen = arabicNumbers.length; i < numbersLen; i++) {
-            value = value.replace(new RegExp(arabicNumbers[i], "g"), persianNumbers[i]);
+        for (var i = 0; i < letters.length; i++) {
+            value = value.replace(new RegExp(letters[i].nf, "g"), letters[i].fa);
         }
         return value;
     }
@@ -79,11 +70,8 @@
             this._str = String(value);
             return this;
         },
-        toPersianChar: function() {
-            return _toPersianChar(this._str);
-        },
-        toPersianNumber: function() {
-            return _toPersianNumber(this._str);
+        toPersian: function() {
+            return _toPersian(this._str);
         }
     };
 
