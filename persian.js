@@ -38,6 +38,12 @@
             {fa: "۰", nf: "0"}
         ];
 
+    /**
+     * Assign toPersian method to String Prototype to
+     *  ease of String object method call without any instantiation
+     */
+    String.prototype.toPersian = function() { return _toPersian(this.toString()); };
+
     //PersianJs main function/constructor, used for prototype.
     function PersianJs(str) {
         this._str = str;
