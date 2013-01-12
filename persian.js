@@ -25,7 +25,17 @@
             {fa:  "", nf: "‌"},
             {fa: "۴", nf: "٤"},
             {fa: "۵", nf: "٥"},
-            {fa: "۶", nf: "٦"}
+            {fa: "۶", nf: "٦"},
+            {fa: "۱", nf: "1"},
+            {fa: "۲", nf: "2"},
+            {fa: "۳", nf: "3"},
+            {fa: "۴", nf: "4"},
+            {fa: "۵", nf: "5"},
+            {fa: "۶", nf: "6"},
+            {fa: "۷", nf: "7"},
+            {fa: "۸", nf: "8"},
+            {fa: "۹", nf: "9"},
+            {fa: "۰", nf: "0"}
         ];
 
     //PersianJs main function/constructor, used for prototype.
