@@ -65,31 +65,31 @@
     }
 	
 	/**
-     * Used for convert english numbers to Persian
+     * Used for convert english numbers to Persian 
      *
      * @param {String} value 
      * @return {String} Returns Converted numbers
      * @api private
      */
-    function _englishNumberToPersianNumber(value) {
+    function _englishNumberToPersian(value) { 
         if (!value) {
             return;
         }
-        var englishNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+        var englishNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"], 
             persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"];
 
-        for (var i = 0, numbersLen = englishNumbers.length; i < numbersLen; i++) {
-            value = value.replace(new RegExp(englishNumbers[i], "g"), persianNumbers[i]);
-        }
-        return value;
-    }
+        for (var i = 0, numbersLen = englishNumbers.length; i < numbersLen; i++) { 
+            value = value.replace(new RegExp(englishNumbers[i], "g"), persianNumbers[i]); 
+        } 
+        return value; 
+    } 
 
-    var persianJs = function(inputStr) {
-        if (inputStr == "" || inputStr == null) {
-            return null;
-        }
-        return new PersianJs(inputStr);
-    }
+    var persianJs = function(inputStr) { 
+        if (inputStr == "" || inputStr == null) { 
+            return null; 
+        } 
+        return new PersianJs(inputStr); 
+    } 
     
     //Version
     persianJs.version = VERSION;
@@ -115,8 +115,8 @@
         toPersianNumber: function() {
             return _toPersianNumber(this._str);
         },
-		englishNumberToPersianNumber: function() {
-            return _englishNumberToPersianNumber(this._str);
+		englishNumberToPersian: function() {
+            return _englishNumberToPersian(this._str);
         }
     };
 
@@ -138,4 +138,4 @@
             return persianJs;
         });
     }
-})();
+})();  
