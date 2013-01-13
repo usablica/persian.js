@@ -116,7 +116,7 @@
         },
         toPersianNumber: function() {
             return _toPersianNumber(this._str);
-        }
+        },
         fixURL: function() {
             return _fixURL(this._str);
         }
