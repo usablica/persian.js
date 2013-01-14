@@ -55,23 +55,23 @@
     };
 
     //PersianJs main function/constructor, used for prototype.
-    function PersianJs(str) {
-        this._str = str;
+    function PersianJs(value) {
+        this._str = String(value);
     }
 
     /**
      * Used for convert Arabic/English characters and numbers to Persian
      *
-     * @param {String} value
+     * @param {String} str
      * @return {String} Returns Converted string
      * @api private
      */
-    function _toPersian(value) {
+    function _toPersian(str) {
 
         for (var i = 0; i < letters.length; i++) {
-            value = value.replace(lettersRegex[i], letters[i].fa);
+            str = str.replace(lettersRegex[i], letters[i].fa);
         }
-        return value;
+        return str;
     }
 
     /**
@@ -88,8 +88,8 @@
         return lettersRegex;
     }
 
-    var persianJs = function(str) {
-        return str ? new PersianJs(str) : str;
+    var persianJs = function(value) {
+        return value ? new PersianJs(value) : value;
     }
 
     //Version
@@ -102,9 +102,6 @@
         },
         value: function () {
             return this._str;
-        },
-        toString: function () {
-            return this._str.toString();
         },
         set : function (value) {
             this._str = String(value);
