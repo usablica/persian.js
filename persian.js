@@ -88,6 +88,13 @@
         return lettersRegex;
     }
 
+    /**
+     * Used for convert Arabic/English characters and numbers to Persian
+     *
+     * @param value
+     * @return Returns PersianJs object/same input value
+     * @api public
+     */
     var persianJs = function(value) {
         return value ? new PersianJs(value) : value;
     }
