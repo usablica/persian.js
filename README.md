@@ -38,6 +38,12 @@ persianJs("٣٤٥").toPersianNumber(); //returns: ۳۴۵
 We're completing **persian.js**, if you need other functionalities, please create a issue on this repository and let us know that.  
 We will implement that as soon as possible!
 
+##Roadmap
+ - Convert English numbers to Persian
+ - Zero-width non-joiner correction (e.g. convert می خواهم to می‌خواهم)
+ - Make library configurable (e.g. setting the language)
+ - Complete unit tests
+
 ##Contributors
 [Afshin Mehrabani](http://afshinm.name/)  
 [Sallar Kaboli](http://sallar.me/)  
