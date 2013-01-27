@@ -39,18 +39,19 @@ We're completing **persian.js**, if you need other functionalities, please creat
 We will implement that as soon as possible!
 
 ##Roadmap
- - Convert English numbers to Persian
- - Zero-width non-joiner correction (e.g. convert می خواهم to می‌خواهم)
- - Make library configurable (e.g. setting the language)
- - Complete unit tests
+- Convert English numbers to Persian
+- Zero-width non-joiner correction (e.g. convert می خواهم to می‌خواهم)
+- Make library configurable (e.g. setting the language)
+- Complete unit tests
 
 ##Contributors
-[Afshin Mehrabani](http://afshinm.name/)  
-[Sallar Kaboli](http://sallar.me/)  
-[Armin Ebrahimi](http://netso.io/)  
-[Nima Shayafar](http://blog.phpmystery.com/)  
-[Soheil Rashidi](http://soheilrashidi.com/)  
-[Bersam Karbasion](http://bersam.org)
+- [Afshin Mehrabani](http://afshinm.name/)  
+- [Sallar Kaboli](http://sallar.me/)  
+- [Armin Ebrahimi](http://netso.io/)  
+- [Nima Shayafar](http://blog.phpmystery.com/)  
+- [Soheil Rashidi](http://soheilrashidi.com/)  
+- [Bersam Karbasion](http://bersam.org)  
+- [Ali Sadattalab](https://github.com/salisa)
 
 ##Contributing
 
