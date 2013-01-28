@@ -44,15 +44,24 @@
      * @return {String} Returns Converted numbers
      * @api private
      */
-    function _toPersianNumber(value) {
+    function _toPersianNumber(value, options) {
         if (!value) {
             return;
         }
+		options = options || {};
+		options.arabic =  options.arabic === undefined? true: options.arabic;
+		options.english =  options.english === undefined? true: options.english;
+		
         var arabicNumbers = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "٠"],
+			englishNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
             persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"];
-
+		
         for (var i = 0, numbersLen = arabicNumbers.length; i < numbersLen; i++) {
-            value = value.replace(new RegExp(arabicNumbers[i], "g"), persianNumbers[i]);
+			var regExpPattern = new Array();
+			if (options.arabic) regExpPattern.push(arabicNumbers[i]);
+			if (options.english) regExpPattern.push(englishNumbers[i]);
+			if (regExpPattern.length == 0) continue;
+            value = value.replace(new RegExp(regExpPattern.join("|"), "g"), persianNumbers[i]);
         }
         return value;
     }
@@ -85,8 +94,8 @@
         toPersianChar: function() {
             return _toPersianChar(this._str);
         },
-        toPersianNumber: function() {
-            return _toPersianNumber(this._str);
+        toPersianNumber: function(options) {
+            return _toPersianNumber(this._str, options);
         }
     };
 
