@@ -25,12 +25,15 @@ persianJs("علي").toPersianChar(); //returns: علی
 
 ###2) Convert to Persian numbers
 ----------
-Used for converting Arabic numbers to Persian.
+Used for converting Arabic or English numbers to Persian.
 
 Example:
 
 ```javascript
-persianJs("٣٤٥").toPersianNumber(); //returns: ۳۴۵
+persianJs("٣٤٥678").toPersianNumber(); //returns: ۳۴۵۶۷۸
+persianJs("٣٤٥678").toPersianNumber({english: false}); //returns: ۳۴۵678
+persianJs("٣٤٥678").toPersianNumber({arabic: false}); //returns: ۳٤۵۶۷۸
+// the default options are {arabic: true, english: true}
 ````
 
 ###3) ?
@@ -39,7 +42,6 @@ We're completing **persian.js**, if you need other functionalities, please creat
 We will implement that as soon as possible!
 
 ##Roadmap
-- Convert English numbers to Persian
 - Zero-width non-joiner correction (e.g. convert می خواهم to می‌خواهم)
 - Make library configurable (e.g. setting the language)
 - Complete unit tests
