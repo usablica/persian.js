@@ -1,5 +1,4 @@
-Persian.js
-=========
+<p align="center"><img src="http://usabli.ca/persianjs/usablica-persianjs-logo300.png"></p>  
 
 A simple JavaScript library for Persian language localization.  
 [![Build Status](https://travis-ci.org/usablica/persian.js.png?branch=master)](https://travis-ci.org/usablica/persian.js)
@@ -53,6 +52,9 @@ We will implement that as soon as possible!
 - [Soheil Rashidi](http://soheilrashidi.com/)  
 - [Bersam Karbasion](http://bersam.org)  
 - [Ali Sadattalab](https://github.com/salisa)
+
+###Special Thanks
+To [Ali Ehsanfar](http://ehsanfar.com/) for Logo design.
 
 ##Contributing
 
