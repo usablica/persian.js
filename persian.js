@@ -1,10 +1,10 @@
-/*
- * PersianJs v0.1.0
- * https://github.com/usablica/persian.js
- * MIT licensed
- *
- * Copyright (C) 2012 usabli.ca and other contributors
- */
+/**
+* PersianJs v0.1.0
+* https://github.com/usablica/persian.js
+* MIT licensed
+*
+* Copyright (C) 2012 usabli.ca and other contributors
+*/
 (function () {
 
     //Default config/variables
@@ -12,17 +12,21 @@
         //Check for nodeJS
         hasModule = (typeof module !== 'undefined' && module.exports);
 
-    //PersianJs main function/constructor, used for prototype.
+    /**
+    * PersianJs main class
+    *
+    * @class PersianJs
+    */
     function PersianJs(str) {
         this._str = str;
     }
 
-    /**
+     /**
      * Used for convert Arabic characters to Persian
      *
+     * @method _toPersianChar
      * @param {String} value 
      * @return {String} Returns Converted string
-     * @api private
      */
     function _toPersianChar(value) {
         if (!value) {
@@ -37,12 +41,12 @@
         return value;
     }
 
-    /**
+     /**
      * Used for convert Arabic numbers to Persian
      *
+     * @method _toPersianNumber
      * @param {String} value 
      * @return {String} Returns Converted numbers
-     * @api private
      */
     function _toPersianNumber(value) {
         if (!value) {
@@ -93,7 +97,12 @@
         return new PersianJs(inputStr);
     }
     
-    //Version
+    /**
+    * Current PersianJs version
+    *
+    * @property version 
+    * @type String
+    */
     persianJs.version = VERSION;
 
     //Prototype
