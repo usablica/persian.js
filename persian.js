@@ -10,60 +10,95 @@
     //Default config/variables
     var VERSION = "0.1.0",
         //Check for nodeJS
-        hasModule = (typeof module !== 'undefined' && module.exports);
+        hasModule = (typeof module !== 'undefined' && module.exports),
+        // Farsi letters and equal not farsi letters
+        letters = [
+            {fa: "ی", nf: "ي"},
+            {fa: "ک", nf: "ﻙ"},
+            {fa:  "", nf: "‍"},
+            {fa: "ﺩ", nf: "ﺩِ"},
+            {fa: "ﺏ", nf: "ﺏِ"},
+            {fa: "ﺯ", nf: "ﺯِ"},
+            {fa: "ﺫ", nf: "ﺫِ"},
+            {fa: "ﺵ", nf: "ﺵِ"},
+            {fa: "ﺱ", nf: "ﺱِ"},
+            {fa:  "", nf: "‌"},
+            {fa: "۱", nf: "١"},
+            {fa: "۲", nf: "٢"},
+            {fa: "۳", nf: "٣"},
+            {fa: "۴", nf: "٤"},
+            {fa: "۵", nf: "٥"},
+            {fa: "۶", nf: "٦"},
+            {fa: "۷", nf: "٧"},
+            {fa: "۸", nf: "٨"},
+            {fa: "۹", nf: "٩"},
+            {fa: "۰", nf: "٠"},
+            {fa: "۱", nf: "1"},
+            {fa: "۲", nf: "2"},
+            {fa: "۳", nf: "3"},
+            {fa: "۴", nf: "4"},
+            {fa: "۵", nf: "5"},
+            {fa: "۶", nf: "6"},
+            {fa: "۷", nf: "7"},
+            {fa: "۸", nf: "8"},
+            {fa: "۹", nf: "9"},
+            {fa: "۰", nf: "0"}
+        ],
+        lettersRegex = _getLettersRegex();
+
+    /**
+     * Assign toPersian method to String Prototype to
+     *  ease of String object method call without any instantiation
+     */
+    String.prototype.toPersian = function() {
+        return _toPersian(this.toString());
+    };
 
     //PersianJs main function/constructor, used for prototype.
-    function PersianJs(str) {
-        this._str = str;
+    function PersianJs(value) {
+        this._str = String(value);
     }
 
     /**
-     * Used for convert Arabic characters to Persian
+     * Used for convert Arabic/English characters and numbers to Persian
      *
-     * @param {String} value 
+     * @param {String} str
      * @return {String} Returns Converted string
      * @api private
      */
-    function _toPersianChar(value) {
-        if (!value) {
-            return;
-        }
-        var arabicChars = ["ي", "ك", "‍", "دِ", "بِ", "زِ", "ذِ", "ِشِ", "ِسِ", "‌", "ى"],
-            persianChars = ["ی", "ک", "", "د", "ب", "ز", "ذ", "ش", "س", "", "ی"];
+    function _toPersian(str) {
 
-        for (var i = 0, charsLen = arabicChars.length; i < charsLen; i++) {
-            value = value.replace(new RegExp(arabicChars[i], "g"), persianChars[i]);
+        for (var i = 0; i < letters.length; i++) {
+            str = str.replace(lettersRegex[i], letters[i].fa);
         }
-        return value;
+        return str;
     }
 
     /**
-     * Used for convert Arabic numbers to Persian
+     * Used for convert Arabic/English characters and numbers to Persian
      *
-     * @param {String} value 
-     * @return {String} Returns Converted numbers
+     * @return {Array} Returns array of letters regex object
      * @api private
      */
-    function _toPersianNumber(value) {
-        if (!value) {
-            return;
+    function _getLettersRegex () {
+        var lettersRegex = [];
+        for (var i = 0; i < letters.length; i++) {
+            lettersRegex.push(new RegExp(letters[i].nf, "g"));
         }
-        var arabicNumbers = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "٠"],
-            persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"];
-
-        for (var i = 0, numbersLen = arabicNumbers.length; i < numbersLen; i++) {
-            value = value.replace(new RegExp(arabicNumbers[i], "g"), persianNumbers[i]);
-        }
-        return value;
+        return lettersRegex;
     }
 
-    var persianJs = function(inputStr) {
-        if (inputStr == "" || inputStr == null) {
-            return null;
-        }
-        return new PersianJs(inputStr);
+    /**
+     * Used for convert Arabic/English characters and numbers to Persian
+     *
+     * @param value
+     * @return Returns PersianJs object/same input value
+     * @api public
+     */
+    var persianJs = function(value) {
+        return value ? new PersianJs(value) : value;
     }
-    
+
     //Version
     persianJs.version = VERSION;
 
@@ -75,18 +110,12 @@
         value: function () {
             return this._str;
         },
-        toString: function () {
-            return this._str.toString();
-        },
         set : function (value) {
             this._str = String(value);
             return this;
         },
-        toPersianChar: function() {
-            return _toPersianChar(this._str);
-        },
-        toPersianNumber: function() {
-            return _toPersianNumber(this._str);
+        toPersian: function() {
+            return _toPersian(this._str);
         }
     };
 

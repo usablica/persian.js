@@ -21,7 +21,7 @@
         "i18n",
         "l10n"
     ],
-    "main": "./persianJs.js",
+    "main": "./persian.js",
     "engines": {
         "node": "*"
     },
