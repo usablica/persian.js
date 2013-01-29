@@ -50,7 +50,6 @@ We will implement that as soon as possible!
 - Convert English numbers to Persian
 - Zero-width non-joiner correction (e.g. convert می خواهم to می‌خواهم)
 - Make library configurable (e.g. setting the language)
-- Complete unit tests
 - Add `uglifyjs` to MakeFile in order to make `.min` version of script (Related to issue #7)
 
 ##Contributors
