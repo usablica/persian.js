@@ -22,6 +22,7 @@
     /**
      * Used for convert Arabic characters to Persian
      *
+     * @method _toPersianNumber
      * @param {String} value 
      * @return {String} Returns Converted string
      * @api private
