@@ -104,7 +104,14 @@
 
         return new PersianJs(inputStr);
     }
-    
+
+    /**
+     * Current PersianJs version
+     *
+     * @property version
+     * @type String
+     */
+
     // Version
     persianJs.version = VERSION;
 
