@@ -15,8 +15,8 @@
 
     // PersianJs main function/constructor, used for prototype.
     var PersianJs = function(str) {
-		// Force toString
-		this._str = '' + str;
+        // Force toString
+        this._str = '' + str;
     }
 
     /**
@@ -63,23 +63,23 @@
         return value;
     }
 
-	/**
-     * Used for convert English numbers to Persian
-     *
-     * @param {String} value 
-     * @return {String} Returns Converted numbers
-     * @api private
-     */
-	var _englishNumberToPersian = function(value) {
-		return (!!value) ? value.replace(/\d+/g, function(digit) {
-			var ret = '';
-			for (var i = 0, len = digit.length; i < len; i++) {
-				ret += String.fromCharCode(digit.charCodeAt(i) + 1728);
-			}
-	 
-			return ret;
-		}) : '';
-	}
+    /**
+    * Used for convert English numbers to Persian
+    *
+    * @param {String} value 
+    * @return {String} Returns Converted numbers
+    * @api private
+    */
+    var _englishNumberToPersian = function(value) {
+        return (!!value) ? value.replace(/\d+/g, function(digit) {
+            var ret = '';
+            for (var i = 0, len = digit.length; i < len; i++) {
+                ret += String.fromCharCode(digit.charCodeAt(i) + 1728);
+            }
+
+            return ret;
+        }) : '';
+    }
 
     var persianJs = function(inputStr) {
         if (inputStr == "" || inputStr == null) {
