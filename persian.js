@@ -5,13 +5,13 @@
  *
  * Copyright (C) 2012 usabli.ca and other contributors
  */
+
 (function (global) {
 
     // Default config/variables
     var VERSION = "0.1.0",
         // Check for nodeJS
-        hasModule = (typeof module !== 'undefined' && module.exports),
-        hasOwnProperty = Object.prototype.hasOwnProperty;
+        hasModule = (typeof module !== 'undefined' && module.exports);
 
     // PersianJs main function/constructor, used for prototype.
     var PersianJs = function(str) {
@@ -73,7 +73,7 @@
         }
         // Replace every %20 with _ to protect them from decodeURI
         var old = "";
-        while (old != value) {
+        while (old !== value) {
             old = value;
             value = value.replace(/(http\S+?)\%20/g, '$1\u200c\u200c\u200c_\u200c\u200c\u200c');
         }
@@ -90,7 +90,7 @@
 
 
     var persianJs = function(inputStr) {
-        if (inputStr == "" || inputStr == null) {
+        if (inputStr === "" || inputStr === null) {
             return null;
         }
 
@@ -114,7 +114,7 @@
             return this._str.toString();
         },
 
-        set : function (value) {
+        set: function (value) {
             this._str = String(value);
             return this;
         },
@@ -125,6 +125,10 @@
 
         toPersianNumber: function() {
             return _toPersianNumber(this._str);
+        }
+
+        fixURL: function() {
+            return _fixURL(this._str);
         }
     };
 
