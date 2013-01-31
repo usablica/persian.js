@@ -11,4 +11,12 @@ describe('convert', function () {
         assert.equal("۳۴۵", persianJs("٣٤٥").toPersianNumber());
         done();
     });
+    it('should change English numbers to Persian', function (done) {
+        assert.equal("۳۴۵", persianJs("345").toPersianNumber());
+        done();
+    });
+    it('should change English or Arabic numbers to Persian', function (done) {
+        assert.equal("۳۴۵", persianJs("3٤5").toPersianNumber());
+        done();
+    });
 });
