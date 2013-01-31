@@ -64,12 +64,12 @@
     }
 
     /**
-    * Used for convert English numbers to Persian
-    *
-    * @param {String} value 
-    * @return {String} Returns Converted numbers
-    * @api private
-    */
+     * Used for convert English numbers to Persian
+     *
+     * @param {String} value 
+     * @return {String} Returns Converted numbers
+     * @api private
+     */
     var _englishNumberToPersian = function(value) {
         return (!!value) ? value.replace(/\d+/g, function(digit) {
             var ret = '';
