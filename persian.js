@@ -13,6 +13,12 @@
         // Check for nodeJS
         hasModule = (typeof module !== 'undefined' && module.exports);
 
+    /**
+     * PersianJs main class 
+     * 
+     * @class PersianJs
+     */
+
     // PersianJs main function/constructor, used for prototype.
     var PersianJs = function(str) {
         // Force toString
