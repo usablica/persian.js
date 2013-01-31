@@ -93,21 +93,8 @@
             return _toPersianChar(this._str);
         },
 
-        /**
-         * Used for convert English/Arabic numbers to Persian
-         *
-         * @param {Object} from: en | ar
-         * @return {String} Returns Converted numbers
-         * @api public
-         */
-        toPersianNumber: function(object) {
-            if (!!object && hasOwnProperty.call(object, 'from')) {
-                switch (object.from.toLowerCase()) {
-                    case 'ar': return _arabicNumbertoPersian(this._str); break;
-                    case 'en':
-                    default: return _englishNumberToPersian(this._str);
-                }
-            }
+        toPersianNumber: function() {
+            return _toPersianNumber(this._str);
         }
     };
 
