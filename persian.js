@@ -28,7 +28,7 @@
     /**
      * Used for convert Arabic characters to Persian
      *
-     * @method _toPersianNumber
+     * @method _toPersianChar
      * @param {String} value 
      * @return {String} Returns Converted string
      * @api private
@@ -51,6 +51,7 @@
     /**
      * Used for convert English or Arabic numbers to Persian
      *
+     * @method _toPersianNumber
      * @param {String} value 
      * @return {String} Returns Converted numbers
      * @api private
