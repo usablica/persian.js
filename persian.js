@@ -49,18 +49,37 @@
     }
 
     /**
-     * Used for convert English or Arabic numbers to Persian
+     * Used for convert Arabic numbers to Persian
      *
-     * @method _toPersianNumber
+     * @method _arabicToPersianNumber
      * @param {String} value 
      * @return {String} Returns Converted numbers
      * @api private
      */
-    var _toPersianNumber = function(value) {
-        return (!!value) ? value.replace(/(\d+)|([\u0660-\u0669]+)/g, function(digit, english, arabic) {
+    var _arabicToPersianNumber = function(value) {
+        return (!!value) ? value.replace(/[\u0660-\u0669]+/g, function(digit) {
             var ret = '';
             for (var i = 0, len = digit.length; i < len; i++) {
-                ret += String.fromCharCode(digit.charCodeAt(i) + ((!!english) ? 1728 : 144));
+                ret += String.fromCharCode(digit.charCodeAt(i) + 144);
+            }
+
+            return ret;
+        }) : '';
+    }
+
+    /**
+     * Used for convert English numbers to Persian
+     *
+     * @method _englishToPersianNumber
+     * @param {String} value 
+     * @return {String} Returns Converted numbers
+     * @api private
+     */
+    var _englishToPersianNumber = function(value) {
+        return (!!value) ? value.replace(/\d+/g, function(digit) {
+            var ret = '';
+            for (var i = 0, len = digit.length; i < len; i++) {
+                ret += String.fromCharCode(digit.charCodeAt(i) + 1728);
             }
 
             return ret;
@@ -95,7 +114,6 @@
         value = value.replace(/\u200c\u200c\u200c_\u200c\u200c\u200c/g, '%20');
         return value;
     }
-
 
     var persianJs = function(inputStr) {
         if (inputStr === "" || inputStr === null) {
@@ -138,9 +156,13 @@
             return _toPersianChar(this._str);
         },
 
-        toPersianNumber: function() {
-            return _toPersianNumber(this._str);
-        }
+        arabicToPersianNumber: function() {
+            return _arabicToPersianNumber(this._str);
+        },
+
+        englishToPersianNumber: function() {
+            return _englishToPersianNumber(this._str);
+        },
 
         fixURL: function() {
             return _fixURL(this._str);

@@ -1,4 +1,4 @@
-//Prepare test
+﻿//Prepare test
 require('./../persian');
 var assert = require('assert');
 
@@ -8,15 +8,7 @@ describe('convert', function () {
         done();
     });
     it('should change Arabic numbers to Persian', function (done) {
-        assert.equal("۱۲۳۴۵۶۷۸۹۰", persianJs("١٢٣٤٥٦٧٨٩٠").toPersianNumber());
-        done();
-    });
-    it('should change English numbers to Persian', function (done) {
-        assert.equal("۱۲۳۴۵۶۷۸۹۰", persianJs("1234567890").toPersianNumber());
-        done();
-    });
-    it('should change English or Arabic numbers to Persian', function (done) {
-        assert.equal("۱۲۳۴۵۶۷۸۹۰", persianJs("123456٧٨٩٠").toPersianNumber());
+        assert.equal("۱۲۳۴۵۶۷۸۹۰", persianJs("١٢٣٤٥٦٧٨٩٠").arabicToPersianNumber());
         done();
     });
 });
