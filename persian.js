@@ -49,7 +49,7 @@
      * @api private
      */
     var _toPersianNumber = function(value) {
-        return (!!value) ? value.replace(/(\d+)|([\u0660-\u0669]+/g, function(digit, english, arabic) {
+        return (!!value) ? value.replace(/(\d+)|([\u0660-\u0669]+)/g, function(digit, english, arabic) {
             var ret = '';
             for (var i = 0, len = digit.length; i < len; i++) {
                 ret += String.fromCharCode(digit.charCodeAt(i) + ((!!english) ? 1728 : 144));
