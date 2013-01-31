@@ -59,6 +59,36 @@
         }) : '';
     }
 
+    /**
+     * Used for fix Persian Charachters in URL
+     * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
+     *
+     * @param {String} value 
+     * @return {String} Returns fixed URL
+     * @api private
+     */
+    function _fixURL(value) {
+        if (!value) {
+            return;
+        }
+        // Replace every %20 with _ to protect them from decodeURI
+        var old = "";
+        while (old != value) {
+            old = value;
+            value = value.replace(/(http\S+?)\%20/g, '$1\u200c\u200c\u200c_\u200c\u200c\u200c');
+        }
+        // Decode URIs
+        // NOTE: This would convert all %20's to _'s which could break some links
+        // but we will undo that later on
+        value = value.replace(/(http\S+)/g, function (s, p) {
+            return decodeURI(p);
+        });
+        // Revive all instances of %20 to make sure no links is broken
+        value = value.replace(/\u200c\u200c\u200c_\u200c\u200c\u200c/g, '%20');
+        return value;
+    }
+
+
     var persianJs = function(inputStr) {
         if (inputStr == "" || inputStr == null) {
             return null;
