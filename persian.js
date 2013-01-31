@@ -5,13 +5,13 @@
  *
  * Copyright (C) 2012 usabli.ca and other contributors
  */
-(function () {
+(function (global) {
 
     // Default config/variables
     var VERSION = "0.1.0",
         // Check for nodeJS
         hasModule = (typeof module !== 'undefined' && module.exports),
-		hasOwnProperty = Object.prototype.hasOwnProperty;
+        hasOwnProperty = Object.prototype.hasOwnProperty;
 
     // PersianJs main function/constructor, used for prototype.
     var PersianJs = function(str) {
@@ -42,39 +42,17 @@
     }
 
     /**
-     * Used for convert Arabic numbers to Persian
+     * Used for convert English or Arabic numbers to Persian
      *
      * @param {String} value 
      * @return {String} Returns Converted numbers
      * @api private
      */
-    var _arabicNumbertoPersian = function(value) {
-        if (!value) {
-            return;
-        }
-
-        var arabicNumbers = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "٠"],
-            persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"];
-
-        for (var i = 0, numbersLen = arabicNumbers.length; i < numbersLen; i++) {
-            value = value.replace(new RegExp(arabicNumbers[i], "g"), persianNumbers[i]);
-        }
-
-        return value;
-    }
-
-    /**
-     * Used for convert English numbers to Persian
-     *
-     * @param {String} value 
-     * @return {String} Returns Converted numbers
-     * @api private
-     */
-    var _englishNumberToPersian = function(value) {
-        return (!!value) ? value.replace(/\d+/g, function(digit) {
+    var _toPersianNumber = function(value) {
+        return (!!value) ? value.replace(/(\d+)|([\u0660-\u0669]+/g, function(digit, english, arabic) {
             var ret = '';
             for (var i = 0, len = digit.length; i < len; i++) {
-                ret += String.fromCharCode(digit.charCodeAt(i) + 1728);
+                ret += String.fromCharCode(digit.charCodeAt(i) + ((!!english) ? 1728 : 144));
             }
 
             return ret;
@@ -141,10 +119,9 @@
 
     // global ender:false
     if (typeof ender === 'undefined') {
-        // here, `this` means `window` in the browser, or `global` on the server
         // add `persianJs` as a global object via a string identifier,
         // for Closure Compiler "advanced" mode
-        this['persianJs'] = persianJs;
+        global['persianJs'] = persianJs;
     }
 
     // global define:false
@@ -153,4 +130,4 @@
             return persianJs;
         });
     }
-})();
+})(this);
