@@ -1,5 +1,4 @@
-Persian.js
-=========
+<p align="center"><img src="http://usabli.ca/persianjs/usablica-persianjs-logo300.png"></p>  
 
 A simple JavaScript library for Persian language localization.  
 [![Build Status](https://travis-ci.org/usablica/persian.js.png?branch=master)](https://travis-ci.org/usablica/persian.js)
@@ -33,7 +32,16 @@ Example:
 persianJs("٣٤٥").toPersianNumber(); //returns: ۳۴۵
 ````
 
-###3) ?
+###3) Fix Persian Characters in URLs
+Used to convert unreadable Persian characters in URL to readable characters.
+
+Example:
+
+```javascript
+persianJs("https://fa.wikipedia.org/wiki/%D8%B5%D9%81%D8%AD%D9%87%D9%94_%D8%A7%D8%B5%D9%84%DB%8C").fixURL(); //returns https://fa.wikipedia.org/wiki/صفحهٔ_اصلی
+````
+
+###4) ?
 ----------
 We're completing **persian.js**, if you need other functionalities, please create a issue on this repository and let us know that.  
 We will implement that as soon as possible!
@@ -42,7 +50,7 @@ We will implement that as soon as possible!
 - Convert English numbers to Persian
 - Zero-width non-joiner correction (e.g. convert می خواهم to می‌خواهم)
 - Make library configurable (e.g. setting the language)
-- Complete unit tests
+- Add `uglifyjs` to MakeFile in order to make `.min` version of script (Related to issue #7)
 
 ##Contributors
 - [Afshin Mehrabani](http://afshinm.name/)  
@@ -52,6 +60,9 @@ We will implement that as soon as possible!
 - [Soheil Rashidi](http://soheilrashidi.com/)  
 - [Bersam Karbasion](http://bersam.org)  
 - [Ali Sadattalab](https://github.com/salisa)
+
+###Special Thanks
+To [Ali Ehsanfar](http://ehsanfar.com/) for Logo design.
 
 ##Contributing
 
