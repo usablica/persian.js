@@ -24,12 +24,14 @@ persianJs("علي").toPersianChar(); //returns: علی
 
 ###2) Convert to Persian numbers
 ----------
-Used for converting Arabic numbers to Persian.
+Used for converting English or Arabic numbers to Persian.
 
 Example:
 
 ```javascript
-persianJs("٣٤٥").toPersianNumber(); //returns: ۳۴۵
+persianJs("1234567890").toPersianNumber() // returns: "۱۲۳۴۵۶۷۸۹۰"
+
+persianJs("١٢٣٤٥٦٧٨٩٠").toPersianNumber() // returns: "۱۲۳۴۵۶۷۸۹۰"
 ````
 
 ###3) Fix Persian Characters in URLs
