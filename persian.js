@@ -91,11 +91,11 @@
     }
 
     var persianJs = function(inputStr) {
-        if (inputStr == "" || inputStr == null) {
+        if (inputStr === "" || inputStr === null) {
             return null;
         }
         return new PersianJs(inputStr);
-    }
+    };
     
     /**
     * Current PersianJs version
