@@ -41,6 +41,7 @@ Example:
 persianJs("345").englishNumber(); //returns: ۳۴۵
 ````
 ###4) Fix Persian Characters in URLs
+----------
 Used to convert unreadable Persian characters in URL to readable characters.
 
 Example:
@@ -48,8 +49,18 @@ Example:
 ```javascript
 persianJs("https://fa.wikipedia.org/wiki/%D8%B5%D9%81%D8%AD%D9%87%D9%94_%D8%A7%D8%B5%D9%84%DB%8C").fixURL(); //returns https://fa.wikipedia.org/wiki/صفحهٔ_اصلی
 ````
+###5) Change keyboard layout
+----------
+Used for converting Persian char to English char.
 
-###5) ?
+Example:
+
+```javascript
+
+persianJs("لخخلمث").switchKey(); //returns: google
+````
+
+###6) ?
 ----------
 We're completing **persian.js**, if you need other functionalities, please create a issue on this repository and let us know that.  
 We will implement that as soon as possible!
