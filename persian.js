@@ -99,6 +99,27 @@
         }
         return value;
     }
+    
+    
+         /**
+* Used for Zero-width non-joiner correction
+* @method _Zwjc
+* @param {String} value
+* @return {String} Returns Zwjc Value
+*/
+    function _Zwjc(value) {
+        if (!value) {
+            return;
+        }
+        var EmptyContent = [" "],
+            Zwjc = ["\u200B\u200C\u200D\uFEFF"];
+
+        for (var i = 0, charsLen = EmptyContent.length; i < charsLen; i++) {
+            value = value.replace(new RegExp(EmptyContent[i], "g"), Zwjc[i]);
+        }
+        return value;
+    }
+    
 
     /**
      * Used for fix Persian Charachters in URL
@@ -173,7 +194,10 @@
         },
         switchKey: function() {
             return _switchKey(this._str);
-        }
+        },
+        Zwjc: function() {
+		    return _Zwjc(this._str);
+		}
     };
 
     //Expose PersianJs
