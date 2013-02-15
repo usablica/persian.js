@@ -21,7 +21,7 @@
         this._str = str;
     }
 
-     /**
+/**
 * Used for convert Arabic characters to Persian
 *
 * @method _toPersianChar
