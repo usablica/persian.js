@@ -1,0 +1,10 @@
+//Prepare test
+require('./../persian');
+var assert = require('assert');
+
+describe('convert', function () {
+    it('should convert Zero-width non-joiner correction', function(done) {
+        assert.equal("می‌خواهم", persianJs("می خواهم").Zwjc());
+        done();
+    });
+});
