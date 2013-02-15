@@ -111,11 +111,11 @@
         if (!value) {
             return;
         }
-        var EmptyContent = [" "],
-            Zwjc = ["\u200B\u200C\u200D\uFEFF"];
+        var emptyContent = [" "],
+            zwjc = ["\u200B\u200C\u200D\uFEFF"];
 
-        for (var i = 0, charsLen = EmptyContent.length; i < charsLen; i++) {
-            value = value.replace(new RegExp(EmptyContent[i], "g"), Zwjc[i]);
+        for (var i = 0, charsLen = emptyContent.length; i < charsLen; i++) {
+            value = value.replace(new RegExp(emptyContent[i], "g"), zwjc[i]);
         }
         return value;
     }
@@ -196,8 +196,8 @@
             return _switchKey(this._str);
         },
         Zwjc: function() {
-		    return _Zwjc(this._str);
-		}
+            return _Zwjc(this._str);
+	}
     };
 
     //Expose PersianJs
