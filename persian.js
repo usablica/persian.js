@@ -12,7 +12,7 @@
         //Check for nodeJS
         hasModule = (typeof module !== 'undefined' && module.exports);
 
-    /**
+/**
 * PersianJs main class
 *
 * @class PersianJs
@@ -41,7 +41,7 @@
         return value;
     }
 
-     /**
+/**
 * Used for Change keyboard layout
 *
 * @method _switchKey
@@ -103,7 +103,7 @@
 
 
 
-     /**
+/**
 * Used for convert English numbers to Persian
 * @method _englishNumber
 * @param {String} value
@@ -122,7 +122,7 @@
         return value;
     }
 
-    /**
+/**
 * Used for fix Persian Charachters in URL
 * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
 *
@@ -158,7 +158,7 @@
         return new PersianJs(inputStr);
     };
     
-    /**
+/**
 * Current PersianJs version
 *
 * @property version
