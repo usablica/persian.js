@@ -61,7 +61,7 @@
         return value;
     }
 
-     /**
+/**
 * Used for convert Arabic numbers to Persian
 *
 * @method _toPersianNumber
