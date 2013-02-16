@@ -12,22 +12,22 @@
         //Check for nodeJS
         hasModule = (typeof module !== 'undefined' && module.exports);
 
-/**
-* PersianJs main class
-*
-* @class PersianJs
-*/
+    /**
+    * PersianJs main class
+    *
+    * @class PersianJs
+    */
     function PersianJs(str) {
         this._str = str;
     }
 
-/**
-* Used for convert Arabic characters to Persian
-*
-* @method _toPersianChar
-* @param {String} value
-* @return {String} Returns Converted string
-*/
+     /**
+     * Used for convert Arabic characters to Persian
+     *
+     * @method _toPersianChar
+     * @param {String} value 
+     * @return {String} Returns Converted string
+     */
     function _toPersianChar(value) {
         if (!value) {
             return;
@@ -41,13 +41,13 @@
         return value;
     }
 
-/**
-* Used for Change keyboard layout
-*
-* @method _switchKey
-* @param {String} value
-* @return {String} Returns Converted char
-*/
+     /**
+     * Used for Change keyboard layout
+     *
+     * @method _switchKey
+     * @param {String} value 
+     * @return {String} Returns Converted char
+     */
     function _switchKey(value) {
         if (!value) {
             return;
@@ -61,13 +61,13 @@
         return value;
     }
 
-/**
-* Used for convert Arabic numbers to Persian
-*
-* @method _toPersianNumber
-* @param {String} value
-* @return {String} Returns Converted numbers
-*/
+     /**
+     * Used for convert Arabic numbers to Persian
+     *
+     * @method _toPersianNumber
+     * @param {String} value 
+     * @return {String} Returns Converted numbers
+     */
     function _toPersianNumber(value) {
         if (!value) {
             return;
@@ -81,13 +81,31 @@
         return value;
     }
 
+     /**
+     * Used for convert English numbers to Persian
+     * @method _englishNumber
+     * @param {String} value 
+     * @return {String} Returns Converted numbers
+    */
+    function _englishNumber(value) {
+        if (!value) {
+            return;
+        }
+        var englishNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+            persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"];
 
-/**
-* Used for Zero-width non-joiner correction
-* @method _Zwjc
-* @param {String} value
-* @return {String} Returns Zwjc Value
-*/
+        for (var i = 0, numbersLen = englishNumbers.length; i < numbersLen; i++) {
+            value = value.replace(new RegExp(englishNumbers[i], "g"), persianNumbers[i]);
+        }
+        return value;
+    }
+    
+    /**
+     * Used for Zero-width non-joiner correction
+     * @method _Zwjc
+     * @param {String} value
+     * @return {String} Returns Zwjc Value
+     */
     function _Zwjc(value) {
         if (!value) {
             return;
@@ -101,35 +119,14 @@
         return value;
     }
 
-
-
-/**
-* Used for convert English numbers to Persian
-* @method _englishNumber
-* @param {String} value
-* @return {String} Returns Converted numbers
-*/
-    function _englishNumber(value) {
-        if (!value) {
-            return;
-        }
-        var englishNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
-            persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"];
-
-        for (var i = 0, numbersLen = englishNumbers.length; i < numbersLen; i++) {
-            value = value.replace(new RegExp(englishNumbers[i], "g"), persianNumbers[i]);
-        }
-        return value;
-    }
-
-/**
-* Used for fix Persian Charachters in URL
-* https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
-*
-* @param {String} value
-* @return {String} Returns fixed URL
-* @api private
-*/
+    /**
+     * Used for fix Persian Charachters in URL
+     * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
+     *
+     * @param {String} value 
+     * @return {String} Returns fixed URL
+     * @api private
+     */
     function _fixURL(value) {
         if (!value) {
             return;
@@ -158,12 +155,12 @@
         return new PersianJs(inputStr);
     };
     
-/**
-* Current PersianJs version
-*
-* @property version
-* @type String
-*/
+    /**
+    * Current PersianJs version
+    *
+    * @property version 
+    * @type String
+    */
     persianJs.version = VERSION;
 
     //Prototype
@@ -195,9 +192,6 @@
         },
         switchKey: function() {
             return _switchKey(this._str);
-        },
-        Zwjc: function() {
-            return _Zwjc(this._str);
         }
     };
 
