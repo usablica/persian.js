@@ -192,6 +192,9 @@
         },
         switchKey: function() {
             return _switchKey(this._str);
+        },
+        Zwjc: function() {
+            return _Zwjc(this._str);
         }
     };
 
