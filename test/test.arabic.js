@@ -8,7 +8,7 @@ describe('convert', function () {
         done();
     });
     it('should change Arabic numbers to Persian', function (done) {
-        assert.equal("۱۲۳۴۵۶۷۸۹۰", persianJs("١٢٣٤٥٦٧٨٩٠").arabicToPersianNumber());
+        assert.equal("۱۲۳۴۵۶۷۸۹۰", persianJs("١٢٣٤٥٦٧٨٩٠").toPersianNumber());
         done();
     });
 });
