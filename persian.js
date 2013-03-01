@@ -1,47 +1,69 @@
-/**
-* PersianJs v0.1.0
-* https://github.com/usablica/persian.js
-* MIT licensed
-*
-* Copyright (C) 2012 usabli.ca and other contributors
-*/
-(function () {
+/*
+ * PersianJs v0.1.0
+ * https://github.com/usablica/persian.js
+ * MIT licensed
+ *
+ * Copyright (C) 2012 usabli.ca and other contributors
+ */
 
-    //Default config/variables
+(function (global) {
+
+    // Default config/variables
     var VERSION = "0.1.0",
-        //Check for nodeJS
+        // Check for nodeJS
         hasModule = (typeof module !== 'undefined' && module.exports);
+        hasProperty = Object.prototype.hasOwnProperty;
 
     /**
-    * PersianJs main class
-    *
-    * @class PersianJs
-    */
+     * PersianJs main class 
+     * 
+     * @class PersianJs
+     */
+
+    // PersianJs main function/constructor, used for prototype.
     function PersianJs(str) {
-        this._str = str;
+        // Force toString
+        this._str = '' + str;
     }
 
-     /**
+    /**
+     * Used for Substitute characters
+     *
+     * @method _substitute
+     * @param {String} value
+     * @param {Array} insertChar
+     * @param {Array} replaceChar
+     * @return {String} Returns Substituted string
+     * @api private
+     */
+    function _substitute(value, insertChar, replaceChar) {
+        for (var i = 0, charsLen = insertChar.length; i < charsLen; i++) {
+            value = value.replace(new RegExp(insertChar[i], "g"), replaceChar[i]);
+        }
+
+        return value;
+    }
+
+    /**
      * Used for convert Arabic characters to Persian
      *
      * @method _toPersianChar
      * @param {String} value 
      * @return {String} Returns Converted string
+     * @api private
      */
     function _toPersianChar(value) {
         if (!value) {
             return;
         }
+
         var arabicChars = ["ي", "ك", "‍", "دِ", "بِ", "زِ", "ذِ", "ِشِ", "ِسِ", "‌", "ى"],
             persianChars = ["ی", "ک", "", "د", "ب", "ز", "ذ", "ش", "س", "", "ی"];
 
-        for (var i = 0, charsLen = arabicChars.length; i < charsLen; i++) {
-            value = value.replace(new RegExp(arabicChars[i], "g"), persianChars[i]);
-        }
-        return value;
+        return _substitute(value, arabicChars, persianChars);
     }
 
-     /**
+    /**
      * Used for Change keyboard layout
      *
      * @method _switchKey
@@ -52,52 +74,37 @@
         if (!value) {
             return;
         }
+
         var persianChar = [ "ض", "ص", "ث", "ق", "ف", "غ", "ع", "ه", "خ", "ح", "ج", "چ", "ش", "س", "ی", "ب", "ل", "ا", "ت", "ن", "م", "ک", "گ", "ظ", "ط", "ز", "ر", "ذ", "د", "پ", "و","؟" ],
             englishChar = [ "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", "z", "x", "c", "v", "b", "n", "m", ",","?" ];
 
-        for (var i = 0, charsLen = persianChar.length; i < charsLen; i++) {
-            value = value.replace(new RegExp(persianChar[i], "g"), englishChar[i]);
-        }
-        return value;
+        return _substitute(value, persianChar, englishChar);
     }
 
-     /**
-     * Used for convert Arabic numbers to Persian
+    /**
+     * Used for convert Arabic/English numbers to Persian
      *
      * @method _toPersianNumber
-     * @param {String} value 
+     * @param {String} value
+     * @param {Object} options
      * @return {String} Returns Converted numbers
+     * @api private
      */
-    function _toPersianNumber(value) {
-        if (!value) {
-            return;
-        }
-        var arabicNumbers = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "٠"],
-            persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"];
+    function _toPersianNumber(value, options) {
+        options = options || {};
 
-        for (var i = 0, numbersLen = arabicNumbers.length; i < numbersLen; i++) {
-            value = value.replace(new RegExp(arabicNumbers[i], "g"), persianNumbers[i]);
+        if (hasProperty.call(options, 'from')) {
+            options.to = (options.from === 'ar') ? 144 : (options.from === 'en') ? 1728 : 0;
         }
-        return value;
-    }
 
-     /**
-     * Used for convert English numbers to Persian
-     * @method _englishNumber
-     * @param {String} value 
-     * @return {String} Returns Converted numbers
-    */
-    function _englishNumber(value) {
-        if (!value) {
-            return;
-        }
-        var englishNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
-            persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"];
-
-        for (var i = 0, numbersLen = englishNumbers.length; i < numbersLen; i++) {
-            value = value.replace(new RegExp(englishNumbers[i], "g"), persianNumbers[i]);
-        }
-        return value;
+        return (!!value) ? value.replace(/[\d\u0660-\u0669]+/g, function(digit) {
+            var ret = '';
+            for (var i = 0, len = digit.length; i < len; i++) {
+                ret += String.fromCharCode(digit.charCodeAt(i) + options.to);
+            }
+    
+            return ret;
+        }) : '';
     }
 
     /**
@@ -114,7 +121,7 @@
         }
         // Replace every %20 with _ to protect them from decodeURI
         var old = "";
-        while (old != value) {
+        while (old !== value) {
             old = value;
             value = value.replace(/(http\S+?)\%20/g, '$1\u200c\u200c\u200c_\u200c\u200c\u200c');
         }
@@ -133,65 +140,75 @@
         if (inputStr === "" || inputStr === null) {
             return null;
         }
+
         return new PersianJs(inputStr);
     };
-    
+
     /**
-    * Current PersianJs version
-    *
-    * @property version 
-    * @type String
-    */
+     * Current PersianJs version
+     *
+     * @property version
+     * @type String
+     */
     persianJs.version = VERSION;
 
-    //Prototype
+    // Prototype
     persianJs.fn = PersianJs.prototype = {
         clone: function () {
             return persianJs(this);
         },
+
         value: function () {
             return this._str;
         },
+
         toString: function () {
             return this._str.toString();
         },
-        set : function (value) {
+
+        set: function (value) {
             this._str = String(value);
             return this;
         },
+
         toPersianChar: function() {
             return _toPersianChar(this._str);
         },
+
         toPersianNumber: function() {
-            return _toPersianNumber(this._str);
+            return _toPersianNumber(this._str, {from: 'ar'});
         },
+
+        englishNumber: function() {
+            return _toPersianNumber(this._str, {from: 'en'});
+        },
+
         fixURL: function() {
             return _fixURL(this._str);
         },
-        englishNumber: function() {
-            return _englishNumber(this._str);
-        },
+
         switchKey: function() {
             return _switchKey(this._str);
         }
     };
 
-    //Expose PersianJs
-    //CommonJS module is defined
+    // Expose PersianJs
+    // CommonJS module is defined
     if (hasModule) {
         module.exports = persianJs;
     }
-    //global ender:false
+
+    // global ender:false
     if (typeof ender === 'undefined') {
-        // here, `this` means `window` in the browser, or `global` on the server
         // add `persianJs` as a global object via a string identifier,
         // for Closure Compiler "advanced" mode
-        this['persianJs'] = persianJs;
+        global['persianJs'] = persianJs;
     }
-    //global define:false
+
+    // global define:false
     if (typeof define === 'function' && define.amd) {
         define('persianJs', [], function () {
             return persianJs;
         });
     }
-})();
+}).call(this, global);

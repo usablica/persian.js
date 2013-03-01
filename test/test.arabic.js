@@ -1,4 +1,4 @@
-//Prepare test
+﻿//Prepare test
 require('./../persian');
 var assert = require('assert');
 
