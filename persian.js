@@ -1,5 +1,5 @@
 /**
-* PersianJs v0.2.0
+* PersianJs v0.3.0
 * https://github.com/usablica/persian.js
 * MIT licensed
 *
@@ -8,7 +8,7 @@
 (function () {
 
     //Default config/variables
-    var VERSION = "0.2.0",
+    var VERSION = "0.3.0",
         //Check for nodeJS
         hasModule = (typeof module !== 'undefined' && module.exports);
 
@@ -21,14 +21,15 @@
         this._str = str;
     }
 
-     /**
-     * Used for convert Arabic characters to Persian
-     *
-     * @method _toPersianChar
-     * @param {String} value 
-     * @return {String} Returns Converted string
-     */
-    function _toPersianChar(value) {
+    /**
+    * Used for convert Arabic characters to Persian
+    *
+    * @api private
+    * @method _arabicChar
+    * @param {String} value 
+    * @return {Object} PersianJs Object
+    */
+    function _arabicChar(value) {
         if (!value) {
             return;
         }
@@ -38,16 +39,18 @@
         for (var i = 0, charsLen = arabicChars.length; i < charsLen; i++) {
             value = value.replace(new RegExp(arabicChars[i], "g"), persianChars[i]);
         }
-        return value;
+        this._str = value;
+        return this;
     }
 
-     /**
-     * Used for Change keyboard layout
-     *
-     * @method _switchKey
-     * @param {String} value 
-     * @return {String} Returns Converted char
-     */
+    /**
+    * Used for Change keyboard layout
+    *
+    * @api private
+    * @method _switchKey
+    * @param {String} value 
+    * @return {Object} PersianJs Object
+    */
     function _switchKey(value) {
         if (!value) {
             return;
@@ -58,17 +61,19 @@
         for (var i = 0, charsLen = persianChar.length; i < charsLen; i++) {
             value = value.replace(new RegExp(persianChar[i], "g"), englishChar[i]);
         }
-        return value;
+        this._str = value;
+        return this;
     }
 
-     /**
-     * Used for convert Arabic numbers to Persian
-     *
-     * @method _toPersianNumber
-     * @param {String} value 
-     * @return {String} Returns Converted numbers
-     */
-    function _toPersianNumber(value) {
+    /**
+    * Used for convert Arabic numbers to Persian
+    *
+    * @api private
+    * @method _arabicNumber
+    * @param {String} value 
+    * @return {Object} PersianJs Object
+    */
+    function _arabicNumber(value) {
         if (!value) {
             return;
         }
@@ -78,14 +83,17 @@
         for (var i = 0, numbersLen = arabicNumbers.length; i < numbersLen; i++) {
             value = value.replace(new RegExp(arabicNumbers[i], "g"), persianNumbers[i]);
         }
-        return value;
+        this._str = value;
+        return this;
     }
 
-     /**
-     * Used for convert English numbers to Persian
-     * @method _englishNumber
-     * @param {String} value 
-     * @return {String} Returns Converted numbers
+    /**
+    * Used for convert English numbers to Persian
+    *
+    * @api private
+    * @method _englishNumber
+    * @param {String} value 
+    * @return {Object} PersianJs Object
     */
     function _englishNumber(value) {
         if (!value) {
@@ -97,17 +105,19 @@
         for (var i = 0, numbersLen = englishNumbers.length; i < numbersLen; i++) {
             value = value.replace(new RegExp(englishNumbers[i], "g"), persianNumbers[i]);
         }
-        return value;
+        this._str = value;
+        return this;
     }
 
     /**
-     * Used for fix Persian Charachters in URL
-     * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
-     *
-     * @param {String} value 
-     * @return {String} Returns fixed URL
-     * @api private
-     */
+    * Used for fix Persian Charachters in URL
+    * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
+    *
+    * @api private
+    * @method _fixURL
+    * @param {String} value 
+    * @return {Object} PersianJs Object
+    */
     function _fixURL(value) {
         if (!value) {
             return;
@@ -126,12 +136,13 @@
         });
         // Revive all instances of %20 to make sure no links is broken
         value = value.replace(/\u200c\u200c\u200c_\u200c\u200c\u200c/g, '%20');
-        return value;
+        this._str = value;
+        return this;
     }
 
     var persianJs = function(inputStr) {
-        if (inputStr === "" || inputStr === null) {
-            return null;
+        if (!inputStr || inputStr === "") {
+            throw new Error("Input is null or empty.");
         }
         return new PersianJs(inputStr);
     };
@@ -159,20 +170,20 @@
             this._str = String(value);
             return this;
         },
-        toPersianChar: function() {
-            return _toPersianChar(this._str);
+        arabicChar: function() {
+            return _arabicChar.call(this, this._str);
         },
-        toPersianNumber: function() {
-            return _toPersianNumber(this._str);
+        arabicNumber: function() {
+            return _arabicNumber.call(this, this._str);
         },
         fixURL: function() {
-            return _fixURL(this._str);
+            return _fixURL.call(this, this._str);
         },
         englishNumber: function() {
-            return _englishNumber(this._str);
+            return _englishNumber.call(this, this._str);
         },
         switchKey: function() {
-            return _switchKey(this._str);
+            return _switchKey.call(this, this._str);
         }
     };
 
