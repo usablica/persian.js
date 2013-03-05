@@ -1,18 +1,17 @@
-/*
- * PersianJs v0.2.0
- * https://github.com/usablica/persian.js
- * MIT licensed
- *
- * Copyright (C) 2012 usabli.ca and other contributors
- */
+/**
+* PersianJs v0.3.0
+* https://github.com/usablica/persian.js
+* MIT licensed
+*
+* Copyright (C) 2012 usabli.ca and other contributors
+*/
 
 (function (global) {
 
-    // Default config/variables
-    var VERSION = "0.2.0",
-        // Check for nodeJS
+    //Default config/variables
+    var VERSION = "0.3.0",
+        //Check for nodeJS
         hasModule = (typeof module !== 'undefined' && module.exports);
-        hasProperty = Object.prototype.hasOwnProperty;
 
     /**
      * PersianJs main class 
@@ -29,12 +28,12 @@
     /**
      * Used for Substitute characters
      *
+     * @api private
      * @method _substitute
      * @param {String} value
      * @param {Array} insertChar
      * @param {Array} replaceChar
      * @return {String} Returns Substituted string
-     * @api private
      */
     function _substitute(value, insertChar, replaceChar) {
         for (var i = 0, charsLen = insertChar.length; i < charsLen; i++) {
@@ -47,12 +46,12 @@
     /**
      * Used for convert Arabic characters to Persian
      *
-     * @method _toPersianChar
-     * @param {String} value 
-     * @return {String} Returns Converted string
      * @api private
+     * @method _arabicChar
+     * @param {String} value 
+     * @return {Object} PersianJs Object
      */
-    function _toPersianChar(value) {
+    function _arabicChar(value) {
         if (!value) {
             return;
         }
@@ -60,15 +59,17 @@
         var arabicChars = ["ي", "ك", "‍", "دِ", "بِ", "زِ", "ذِ", "ِشِ", "ِسِ", "‌", "ى"],
             persianChars = ["ی", "ک", "", "د", "ب", "ز", "ذ", "ش", "س", "", "ی"];
 
-        return _substitute(value, arabicChars, persianChars);
+        this._str = _substitute(value, arabicChars, persianChars);
+        return this;
     }
 
     /**
      * Used for Change keyboard layout
      *
+     * @api private
      * @method _switchKey
      * @param {String} value 
-     * @return {String} Returns Converted char
+     * @return {Object} PersianJs Object
      */
     function _switchKey(value) {
         if (!value) {
@@ -78,42 +79,43 @@
         var persianChar = [ "ض", "ص", "ث", "ق", "ف", "غ", "ع", "ه", "خ", "ح", "ج", "چ", "ش", "س", "ی", "ب", "ل", "ا", "ت", "ن", "م", "ک", "گ", "ظ", "ط", "ز", "ر", "ذ", "د", "پ", "و","؟" ],
             englishChar = [ "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", "z", "x", "c", "v", "b", "n", "m", ",","?" ];
 
-        return _substitute(value, persianChar, englishChar);
+       this._str = _substitute(value, persianChar, englishChar);
+       return this;
     }
 
     /**
      * Used for convert Arabic/English numbers to Persian
      *
+     * @api private
      * @method _toPersianNumber
      * @param {String} value
-     * @param {Object} options
-     * @return {String} Returns Converted numbers
-     * @api private
+     * @return {Object} PersianJs Object
      */
-    function _toPersianNumber(value, options) {
-        options = options || {};
+    function _toPersianNumber(value) {
+    	if (!value) {
+    		return;
+    	}
 
-        if (hasProperty.call(options, 'from')) {
-            options.to = (options.from === 'ar') ? 144 : (options.from === 'en') ? 1728 : 0;
-        }
-
-        return (!!value) ? value.replace(/[\d\u0660-\u0669]+/g, function(digit) {
+        this._str = value.replace(/([\u0660-\u0669]+)|(\d+)/g, function(digit, arabic, english) {
             var ret = '';
             for (var i = 0, len = digit.length; i < len; i++) {
-                ret += String.fromCharCode(digit.charCodeAt(i) + options.to);
+                ret += String.fromCharCode(digit.charCodeAt(i) + ((!!arabic) ? 144 : 1728));
             }
     
             return ret;
         }) : '';
+
+        return this;
     }
 
     /**
      * Used for fix Persian Charachters in URL
      * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
      *
-     * @param {String} value 
-     * @return {String} Returns fixed URL
      * @api private
+     * @method _fixURL
+     * @param {String} value 
+     * @return {Object} PersianJs Object
      */
     function _fixURL(value) {
         if (!value) {
@@ -133,12 +135,13 @@
         });
         // Revive all instances of %20 to make sure no links is broken
         value = value.replace(/\u200c\u200c\u200c_\u200c\u200c\u200c/g, '%20');
-        return value;
+        this._str = value;
+        return this;
     }
 
     var persianJs = function(inputStr) {
-        if (inputStr === "" || inputStr === null) {
-            return null;
+        if (!inputStr || inputStr === "") {
+            throw new Error("Input is null or empty.");
         }
 
         return new PersianJs(inputStr);
@@ -171,24 +174,24 @@
             return this;
         },
 
-        toPersianChar: function() {
-            return _toPersianChar(this._str);
+        arabicChar: function() {
+            return _arabicChar.call(this, this._str);
         },
 
-        toPersianNumber: function() {
-            return _toPersianNumber(this._str, {from: 'ar'});
+        arabicNumber: function() {
+            return _toPersianNumber.call(this, this._str);
         },
 
-        englishNumber: function() {
-            return _toPersianNumber(this._str, {from: 'en'});
+		englishNumber: function() {
+            return _toPersianNumber.call(this, this._str);
         },
 
         fixURL: function() {
-            return _fixURL(this._str);
+            return _fixURL.call(this, this._str);
         },
 
         switchKey: function() {
-            return _switchKey(this._str);
+            return _switchKey.call(this, this._str);
         }
     };
 

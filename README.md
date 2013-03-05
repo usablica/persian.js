@@ -19,7 +19,7 @@ Used for converting Arabic characters to Persian.
 Example:
 
 ```javascript
-persianJs("علي").toPersianChar(); //returns: علی
+persianJs("علي").arabicChar().toString(); //returns: علی
 ````
 
 ###2) Convert to Persian numbers from Arabic Number
@@ -29,7 +29,7 @@ Used for converting Arabic numbers to Persian.
 Example:
 
 ```javascript
-persianJs("٣٤٥").toPersianNumber(); //returns: ۳۴۵
+persianJs("٣٤٥").arabicNumber().toString(); //returns: ۳۴۵
 ````
 ###3) Convert to Persian numbers from English Number
 ----------
@@ -38,7 +38,7 @@ Used for converting English numbers to Persian.
 Example:
 
 ```javascript
-persianJs("345").englishNumber(); //returns: ۳۴۵
+persianJs("345").englishNumber().toString(); //returns: ۳۴۵
 ````
 ###4) Fix Persian Characters in URLs
 ----------
@@ -47,7 +47,7 @@ Used to convert unreadable Persian characters in URL to readable characters.
 Example:
 
 ```javascript
-persianJs("https://fa.wikipedia.org/wiki/%D8%B5%D9%81%D8%AD%D9%87%D9%94_%D8%A7%D8%B5%D9%84%DB%8C").fixURL(); //returns https://fa.wikipedia.org/wiki/صفحهٔ_اصلی
+persianJs("https://fa.wikipedia.org/wiki/%D8%B5%D9%81%D8%AD%D9%87%D9%94_%D8%A7%D8%B5%D9%84%DB%8C").fixURL().toString(); //returns https://fa.wikipedia.org/wiki/صفحهٔ_اصلی
 ````
 ###5) Change keyboard layout
 ----------
@@ -57,13 +57,20 @@ Example:
 
 ```javascript
 
-persianJs("لخخلمث").switchKey(); //returns: google
+persianJs("لخخلمث").switchKey().toString(); //returns: google
 ````
 
-###6) ?
+###Chainable using
 ----------
-We're completing **persian.js**, if you need other functionalities, please create a issue on this repository and let us know that.  
-We will implement that as soon as possible!
+You can use all of the functions together with one PersianJs instance (in v0.3):
+
+Example:
+
+```javascript
+
+persianJs("علي٤2465").arabicChar().englishNumber().arabicNumber().toString(); //returns: علی۴۲۴۶۵
+````
+
 
 ##Roadmap
 - Zero-width non-joiner correction (e.g. convert می خواهم to می‌خواهم)
