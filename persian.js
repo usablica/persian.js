@@ -1,5 +1,5 @@
 /**
-* PersianJs v0.1.0
+* PersianJs v0.2.0
 * https://github.com/usablica/persian.js
 * MIT licensed
 *
@@ -8,7 +8,7 @@
 (function () {
 
     //Default config/variables
-    var VERSION = "0.1.0",
+    var VERSION = "0.2.0",
         //Check for nodeJS
         hasModule = (typeof module !== 'undefined' && module.exports);
 
