@@ -182,7 +182,7 @@
             return _toPersianNumber.call(this, this._str);
         },
 
-		englishNumber: function() {
+        englishNumber: function() {
             return _toPersianNumber.call(this, this._str);
         },
 
