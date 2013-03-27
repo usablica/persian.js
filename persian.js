@@ -110,7 +110,7 @@
         if (!value) {
             return;
         }
-        var emptyContent = [" "],
+        var emptyContent = ["\u0020"],
             zwjc = ["\u200B\u200C\u200D\uFEFF"];
 
         for (var i = 0, charsLen = emptyContent.length; i < charsLen; i++) {
