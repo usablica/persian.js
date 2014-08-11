@@ -170,7 +170,7 @@
 
         this._str = newValue;
         return this;
-	}
+    }
 
     var persianJs = function(inputStr) {
         if (!inputStr || inputStr === "") {
@@ -218,7 +218,7 @@
             return _switchKey.call(this, this._str);
         },
         persianNumberToEng: function() {
-        	return _persianNumberToEng.call(this, this._str);
+            return _persianNumberToEng.call(this, this._str);
         }
     };
 
