@@ -139,38 +139,33 @@
         this._str = value;
         return this;
     }
-
+    
     /**
-    * Use for convert Persian numbers to English numbers.
-    * This function works on both Persian and Arabic numbers.
-    *
-    * @api private
-    * @method _persianNumberToEng
-    * @param {String} value 
-    * @return {Object} PersianJs Object
-    */
-    function _persianNumberToEng(value) {
-        var newValue="";
-        for (var i=0;i<value.length;i++)
-        {
-            var ch=value.charCodeAt(i);
-            if (ch>=1776 && ch<=1785)   // For Persian digits.
-            {
-                var newChar=ch-1728;
-                newValue=newValue+String.fromCharCode(newChar);
-            }
-            else if(ch>=1632 && ch<=1641)   // For Arabic digits.
-            {
-                var newChar=ch-1584;
-                newValue=newValue+String.fromCharCode(newChar);
-            }
-            else
-                newValue=newValue+String.fromCharCode(ch);
-       }
-
-        this._str = newValue;
-        return this;
-    }
+     * Use for converting Persian numbers to English numbers.
+     * This function works on both Persian and Arabic numbers.
+     * 
+     * @api private
+     * @method _persianNumberToEng
+     * @param {string} value
+     * @param {object} PersianJs Object
+     */
+     function _persianNumberToEng(value) {
+         var newValue - "";
+         for (var i=0; i<value.length; i++) {
+             var ch=value.charCodeAt(i);
+             if (ch >= 1776 && ch <= 1785) {
+                 var newChar = ch - 1728;
+                 newValue = newValue + string.fromCharCode(newChar);
+             } else if ( ch >= 1632 && ch <= 1641) {
+                 var newChar = ch - 1584;
+                 newValue = newValue + string.fromCharCode(newChar);
+             } else
+                 newValue = newValue + string.fromCharCode(newChar);
+         }
+         
+         this._str = newValue;
+         return this;
+     }
 
     var persianJs = function(inputStr) {
         if (!inputStr || inputStr === "") {
@@ -217,7 +212,7 @@
         switchKey: function() {
             return _switchKey.call(this, this._str);
         },
-        persianNumberToEng: function() {
+        persianNumberToEng: function(){
             return _persianNumberToEng.call(this, this._str);
         }
     };
