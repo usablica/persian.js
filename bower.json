@@ -1,0 +1,30 @@
+{
+    "name": "persian.js",
+    "main": "persian.js",
+    "version": "0.3.0",
+    "homepage": "http://usablica.github.com/persian.js/",
+    "authors": [
+        "Afshin Mehrabani <afshin.meh@gmail.com> (http://afshinm.name/)"
+    ],
+    "description": "Persian language localization",
+    "moduleType": [
+        "amd",
+        "globals",
+        "node"
+    ],
+    "keywords": [
+        "Persian",
+        "localization",
+        "locale"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests",
+        ".travis.yml",
+        "Makefile"
+    ]
+}
