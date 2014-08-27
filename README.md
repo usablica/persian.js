@@ -60,6 +60,16 @@ Example:
 
 persianJs("لخخلمث").switchKey().toString(); //returns: google
 ````
+###6) Convert Persian numbers to English numbers.
+----------
+Used for converting Persian/Arabic Numbers to English numbers.
+
+Example:
+
+```javascript
+
+persianJs("۱۲۳").persianNumberToEng().toString(); //returns: 123
+````
 
 ###Chainable using
 ----------
