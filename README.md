@@ -9,7 +9,8 @@ If your in production environment, use `persian.min.js` instead.
 
 ###In Node.js
     npm install persianjs
-
+###In Bower
+    bower install persianjs
 ##Functions
 
 ###1) Convert to Persian characters
