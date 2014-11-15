@@ -109,6 +109,28 @@
         return this;
     }
 
+	    /**
+    * Used for convert Persian numbers to English
+    *
+    * @api private
+    * @method _persianNumber
+    * @param {String} value 
+    * @return {Object} PersianJs Object
+    */
+    function _persianNumber(value) {
+        if (!value) {
+            return;
+        }
+        var englishNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+            persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"];
+
+        for (var i = 0, numbersLen = englishNumbers.length; i < numbersLen; i++) {
+            value = value.replace(new RegExp(persianNumbers[i], "g"), englishNumbers[i]);
+        }
+        this._str = value;
+        return this;
+    }
+
     /**
     * Used for fix Persian Charachters in URL
     * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
@@ -181,6 +203,9 @@
         },
         englishNumber: function() {
             return _englishNumber.call(this, this._str);
+        },
+		persianNumber: function() {
+            return _persianNumber.call(this, this._str);
         },
         switchKey: function() {
             return _switchKey.call(this, this._str);
