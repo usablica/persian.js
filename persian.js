@@ -22,11 +22,43 @@
     }
 
     /**
+    * Used for Zero-width non-joiner correction
+    *
+    * @api private
+    * @method _halfSpace
+    * @param {string} value
+    * @return {object} PersianJs object
+    */
+
+    function _halfSpace(value){
+      if(!value){
+        return;
+      }
+
+      var pattern;
+
+      /*
+       * Replace Zero-width non-joiner between persian MI.
+       */
+      pattern = /((\s\u0645\u06CC)+( )+([\u0600-\u06EF]{1,}){1,})/g;
+      value = value.replace( new RegExp(pattern), "$2\u200C$4" );
+
+      /*
+       * Replace Zero-width non-joiner between perisan De-Yii.
+       */
+       pattern = /(([\u0600-\u06EF]{1,})+( )+(ای|ایی|اند|ایم|اید|ام){1})/g;
+       value = value.replace( new RegExp(pattern), "$2\u200C$4" );
+
+       this._str = value;
+       return this;
+    }
+
+    /**
     * Used for convert Arabic characters to Persian
     *
     * @api private
     * @method _arabicChar
-    * @param {String} value 
+    * @param {String} value
     * @return {Object} PersianJs Object
     */
     function _arabicChar(value) {
@@ -48,7 +80,7 @@
     *
     * @api private
     * @method _switchKey
-    * @param {String} value 
+    * @param {String} value
     * @return {Object} PersianJs Object
     */
     function _switchKey(value) {
@@ -70,7 +102,7 @@
     *
     * @api private
     * @method _arabicNumber
-    * @param {String} value 
+    * @param {String} value
     * @return {Object} PersianJs Object
     */
     function _arabicNumber(value) {
@@ -92,7 +124,7 @@
     *
     * @api private
     * @method _englishNumber
-    * @param {String} value 
+    * @param {String} value
     * @return {Object} PersianJs Object
     */
     function _englishNumber(value) {
@@ -115,7 +147,7 @@
     *
     * @api private
     * @method _fixURL
-    * @param {String} value 
+    * @param {String} value
     * @return {Object} PersianJs Object
     */
     function _fixURL(value) {
@@ -146,11 +178,11 @@
         }
         return new PersianJs(inputStr);
     };
-    
+
     /**
     * Current PersianJs version
     *
-    * @property version 
+    * @property version
     * @type String
     */
     persianJs.version = VERSION;
@@ -184,6 +216,9 @@
         },
         switchKey: function() {
             return _switchKey.call(this, this._str);
+        },
+        halfSpace: function(){
+            return _halfSpace.call(this, this._str);
         }
     };
 

@@ -61,6 +61,16 @@ Example:
 persianJs("لخخلمث").switchKey().toString(); //returns: google
 ````
 
+
+###6) Zero-width non-joiner correction
+----------
+Example:
+
+```javascript
+
+persianJs("آمده ای ولی من رفته ام و می آییم").halfSpace().toString(); //returns: آمده‌ای ولی من رفته‌ام و می‌آییم
+````
+
 ###Chainable using
 ----------
 You can use all of the functions together with one PersianJs instance (in v0.3):
@@ -74,7 +84,6 @@ persianJs("علي٤2465").arabicChar().englishNumber().arabicNumber().toString()
 
 
 ##Roadmap
-- Zero-width non-joiner correction (e.g. convert می خواهم to می‌خواهم)
 - Make library configurable (e.g. setting the language)
 - Add `uglifyjs` to MakeFile in order to make `.min` version of script (Related to issue #7)
 
@@ -104,16 +113,16 @@ This is a open-source project. Fork the project, complete the code and send pull
 ##License
 
     Copyright (C) 2012 Afshin Mehrabani (afshin.meh@gmail.com)
-    
-    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
-    documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
-    the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+    documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+    the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
     and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-    The above copyright notice and this permission notice shall be included in all copies or substantial portions 
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions
     of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
-    TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
-    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
-    CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+    TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+    CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
     IN THE SOFTWARE.
