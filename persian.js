@@ -108,6 +108,29 @@
         this._str = value;
         return this;
     }
+    
+    /**
+    * Used for convert Persian and Arabic numbers to English Numbers In order to prevent error in form validation in UNIX based OS e.g. Linux and iOS
+    * In above mentioned operating systems a number field with Persian-Arabic numbers cannot pass validation in some frameworks because they cannot detect these characters as number
+    * so you need to convert them before sending.
+    *
+    * @api private
+    * @method convertUnicodeNumbersToEnglish
+    * @param {String} value 
+    * @return {Object} PersianJs Object
+    */
+    function convertUnicodeNumbersToEnglish(value){
+        if (!value) return value;
+        var enNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+            faNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"],
+            arNumbers = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "٠"];
+        for (var i = 0, numbersLen = faNumbers.length; i < numbersLen; i++) {
+            value = value.replace(new RegExp(faNumbers[i], "g"), enNumbers[i]);
+            value = value.replace(new RegExp(arNumbers[i], "g"), enNumbers[i]);
+        }
+        this._str = value;
+        return this;
+    }
 
     /**
     * Used for fix Persian Charachters in URL
