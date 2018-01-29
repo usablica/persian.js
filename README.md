@@ -1,5 +1,3 @@
-<p align="center"><img src="http://usabli.ca/persianjs/usablica-persianjs-logo300.png"></p>
-
 A simple JavaScript library for Persian language localization.  
 [![Build Status](https://travis-ci.org/usablica/persian.js.svg?branch=master)](https://travis-ci.org/usablica/persian.js)
 
