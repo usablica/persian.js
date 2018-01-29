@@ -1,4 +1,4 @@
-/**
+﻿/**
 * PersianJs v0.3.0
 * https://github.com/usablica/persian.js
 * MIT licensed
@@ -11,6 +11,12 @@
     var VERSION = "0.3.0",
         //Check for nodeJS
         hasModule = (typeof module !== 'undefined' && module.exports);
+	
+	//Declare Number Arrays in different locales
+	var arabicNumbers  = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "٠"],
+		persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"], 
+		englishNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+        
 
     /**
     * PersianJs main class
@@ -77,9 +83,6 @@
         if (!value) {
             return;
         }
-        var arabicNumbers = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "٠"],
-            persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"];
-
         for (var i = 0, numbersLen = arabicNumbers.length; i < numbersLen; i++) {
             value = value.replace(new RegExp(arabicNumbers[i], "g"), persianNumbers[i]);
         }
@@ -99,9 +102,6 @@
         if (!value) {
             return;
         }
-        var englishNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
-            persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"];
-
         for (var i = 0, numbersLen = englishNumbers.length; i < numbersLen; i++) {
             value = value.replace(new RegExp(englishNumbers[i], "g"), persianNumbers[i]);
         }
@@ -127,6 +127,25 @@
         }
         this._str = value;
         return this;
+    }
+	
+	/**
+    * Used for convert Persian numbers to English string
+    *
+    * @api private
+    * @method _toEnglishNumber
+    * @param {String} value 
+    * @return {String} Value with numbers converted to English
+    */
+    function _toEnglishNumber(value) {
+        if (!value) {
+            return;
+        }
+        for (var i = 0, numbersLen = englishNumbers.length; i < numbersLen; i++) {
+            value = value.replace(new RegExp(persianNumbers[i], "g"), englishNumbers[i])
+						 .replace(new RegExp(arabicNumbers[i], "g"), englishNumbers[i]);
+        }
+        return value;
     }
 
     /**
@@ -205,6 +224,9 @@
         englishNumber: function() {
             return _englishNumber.call(this, this._str);
         },
+		toEnglishNumber: function() {
+			return _toEnglishNumber(this._str);
+		},
         switchKey: function() {
             return _switchKey.call(this, this._str);
         },
