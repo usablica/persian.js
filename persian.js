@@ -108,6 +108,26 @@
         this._str = value;
         return this;
     }
+    
+    /**
+     * Used for Zero-width non-joiner correction
+     * @method _Zwjc
+     * @param {String} value
+     * @return {String} Returns Zwjc Value
+     */
+    function _Zwjc(value) {
+        if (!value) {
+            return;
+        }
+        var emptyContent = ["\u0020"],
+            zwjc = ["\u200B\u200C\u200D\uFEFF"];
+
+        for (var i = 0, charsLen = emptyContent.length; i < charsLen; i++) {
+            value = value.replace(new RegExp(emptyContent[i], "g"), zwjc[i]);
+        }
+        this._str = value;
+        return this;
+    }
 
     /**
     * Used for fix Persian Charachters in URL
@@ -184,6 +204,9 @@
         },
         switchKey: function() {
             return _switchKey.call(this, this._str);
+        },
+        Zwjc: function() {
+            return _Zwjc.call(this, this._str);
         }
     };
 
