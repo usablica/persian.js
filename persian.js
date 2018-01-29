@@ -113,7 +113,7 @@
      * Used for Zero-width non-joiner correction
      * @method _Zwjc
      * @param {String} value
-     * @return {String} Returns Zwjc Value
+     * @return {Object} PersianJs Object
      */
     function _Zwjc(value) {
         if (!value) {
@@ -130,12 +130,12 @@
     }
 	
 	/**
-    * Used for convert Persian numbers to English string
+    * Used for convert Persian and Arabic numbers to English string
     *
     * @api private
     * @method _toEnglishNumber
     * @param {String} value 
-    * @return {String} Value with numbers converted to English
+    * @return {Object} PersianJs Object
     */
     function _toEnglishNumber(value) {
         if (!value) {
@@ -145,7 +145,8 @@
             value = value.replace(new RegExp(persianNumbers[i], "g"), englishNumbers[i])
 						 .replace(new RegExp(arabicNumbers[i], "g"), englishNumbers[i]);
         }
-        return value;
+        this._str = value;
+        return this;
     }
 
     /**
@@ -225,7 +226,7 @@
             return _englishNumber.call(this, this._str);
         },
 		toEnglishNumber: function() {
-			return _toEnglishNumber(this._str);
+			return _toEnglishNumber.call(this, this._str);
 		},
         switchKey: function() {
             return _switchKey.call(this, this._str);
