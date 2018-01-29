@@ -1,14 +1,20 @@
+# persian.js
 A simple JavaScript library for Persian language localization.  
 [![Build Status](https://travis-ci.org/usablica/persian.js.svg?branch=master)](https://travis-ci.org/usablica/persian.js)
 
-##How to use
+## How to use
 Simply include `persian.js` in your HTML page and use the functions.
 If your in production environment, use `persian.min.js` instead.
 
-###In Node.js
-    npm install persianjs
-###In Bower
-    bower install persianjs
+### In Node.js
+```bash
+npm install persianjs
+```
+### In Bower
+```bash
+bower install persianjs
+```
+
 ##Functions
 
 ###1) Convert to Persian characters
