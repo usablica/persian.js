@@ -26,7 +26,7 @@
     *
     * @api private
     * @method _arabicChar
-    * @param {String} value 
+    * @param {String} value
     * @return {Object} PersianJs Object
     */
     function _arabicChar(value) {
@@ -48,7 +48,7 @@
     *
     * @api private
     * @method _switchKey
-    * @param {String} value 
+    * @param {String} value
     * @return {Object} PersianJs Object
     */
     function _switchKey(value) {
@@ -70,7 +70,7 @@
     *
     * @api private
     * @method _arabicNumber
-    * @param {String} value 
+    * @param {String} value
     * @return {Object} PersianJs Object
     */
     function _arabicNumber(value) {
@@ -92,7 +92,7 @@
     *
     * @api private
     * @method _englishNumber
-    * @param {String} value 
+    * @param {String} value
     * @return {Object} PersianJs Object
     */
     function _englishNumber(value) {
@@ -130,15 +130,15 @@
     }
 
     /**
-    * Used for fix Persian Charachters in URL
+    * Used for decode Persian Charachters in URL
     * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
     *
     * @api private
-    * @method _fixURL
-    * @param {String} value 
+    * @method _decodeURL
+    * @param {String} value
     * @return {Object} PersianJs Object
     */
-    function _fixURL(value) {
+    function _decodeURL(value) {
         if (!value) {
             return;
         }
@@ -166,11 +166,11 @@
         }
         return new PersianJs(inputStr);
     };
-    
+
     /**
     * Current PersianJs version
     *
-    * @property version 
+    * @property version
     * @type String
     */
     persianJs.version = VERSION;
@@ -197,7 +197,10 @@
             return _arabicNumber.call(this, this._str);
         },
         fixURL: function() {
-            return _fixURL.call(this, this._str);
+            return _decodeURL.call(this, this._str);
+        },
+        decodeURL: function() {
+            return _decodeURL.call(this, this._str);
         },
         englishNumber: function() {
             return _englishNumber.call(this, this._str);

@@ -1,10 +1,10 @@
-<p align="center"><img src="http://usabli.ca/persianjs/usablica-persianjs-logo300.png"></p>  
+<p align="center"><img src="http://usabli.ca/persianjs/usablica-persianjs-logo300.png"></p>
 
-A simple JavaScript library for Persian language localization.  
+A simple JavaScript library for Persian language localization.
 [![Build Status](https://travis-ci.org/usablica/persian.js.png?branch=master)](https://travis-ci.org/usablica/persian.js)
 
 ##How to use
-Simply include `persian.js` in your HTML page and use the functions.   
+Simply include `persian.js` in your HTML page and use the functions.
 If your in production environment, use `persian.min.js` instead.
 
 ###In Node.js
@@ -41,7 +41,7 @@ Example:
 ```javascript
 persianJs("345").englishNumber().toString(); //returns: ۳۴۵
 ````
-###4) Fix Persian Characters in URLs
+###4) Decode Percent-encoding Characters in URLs
 ----------
 Used to convert unreadable Persian characters in URL to readable characters.
 
@@ -79,12 +79,12 @@ persianJs("علي٤2465").arabicChar().englishNumber().arabicNumber().toString()
 - Add `uglifyjs` to MakeFile in order to make `.min` version of script (Related to issue #7)
 
 ##Main Contributors
-- [Afshin Mehrabani](http://afshinm.name/)  
-- [Sallar Kaboli](http://sallar.me/)  
-- [Armin Ebrahimi](http://netso.io/)  
-- [Nima Shayafar](http://blog.phpmystery.com/)  
-- [Soheil Rashidi](http://soheilrashidi.com/)  
-- [Bersam Karbasion](http://bersam.org)  
+- [Afshin Mehrabani](http://afshinm.name/)
+- [Sallar Kaboli](http://sallar.me/)
+- [Armin Ebrahimi](http://netso.io/)
+- [Nima Shayafar](http://blog.phpmystery.com/)
+- [Soheil Rashidi](http://soheilrashidi.com/)
+- [Bersam Karbasion](http://bersam.org)
 - [Ali Sadattalab](https://github.com/salisa)
 
 other conributors: https://github.com/usablica/persian.js/contributors
@@ -104,16 +104,16 @@ This is a open-source project. Fork the project, complete the code and send pull
 ##License
 
     Copyright (C) 2012 Afshin Mehrabani (afshin.meh@gmail.com)
-    
-    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
-    documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
-    the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+    documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+    the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
     and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-    The above copyright notice and this permission notice shall be included in all copies or substantial portions 
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions
     of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
-    TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
-    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
-    CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+    TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+    CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
     IN THE SOFTWARE.
