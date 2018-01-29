@@ -60,6 +60,12 @@ Example:
 
 persianJs("لخخلمث").switchKey().toString(); //returns: google
 ````
+###6) Convert numbers to words
+----------
+Used for representing numbers as Persian words.
+```javascript
+persianJs("1372").digitsToWords().toString(); //returns: یک هزار و سیصد و هفتاد و دو
+````
 
 ###Chainable using
 ----------
