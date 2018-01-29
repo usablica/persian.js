@@ -67,6 +67,16 @@ Used for representing numbers as Persian words.
 persianJs("1372").digitsToWords().toString(); //returns: یک هزار و سیصد و هفتاد و دو
 ````
 
+
+###6) Zero-width non-joiner correction
+----------
+Example:
+
+```javascript
+
+persianJs("آمده ای ولی من رفته ام و می آییم").halfSpace().toString(); //returns: آمده‌ای ولی من رفته‌ام و می‌آییم
+````
+
 ###Chainable using
 ----------
 You can use all of the functions together with one PersianJs instance (in v0.3):
@@ -80,7 +90,6 @@ persianJs("علي٤2465").arabicChar().englishNumber().arabicNumber().toString()
 
 
 ##Roadmap
-- Zero-width non-joiner correction (e.g. convert می خواهم to می‌خواهم)
 - Make library configurable (e.g. setting the language)
 - Add `uglifyjs` to MakeFile in order to make `.min` version of script (Related to issue #7)
 

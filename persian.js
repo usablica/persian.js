@@ -1,10 +1,10 @@
 ﻿/**
-* PersianJs v0.3.0
-* https://github.com/usablica/persian.js
-* MIT licensed
-*
-* Copyright (C) 2012 usabli.ca and other contributors
-*/
+ * PersianJs v0.3.0
+ * https://github.com/usablica/persian.js
+ * MIT licensed
+ *
+ * Copyright (C) 2012 usabli.ca and other contributors
+ */
 (function () {
 
     //Default config/variables
@@ -19,22 +19,49 @@
         
 
     /**
-    * PersianJs main class
-    *
-    * @class PersianJs
-    */
+     * PersianJs main class
+     *
+     * @class PersianJs
+     */
     function PersianJs(str) {
         this._str = str;
     }
 
     /**
-    * Used for convert Arabic characters to Persian
-    *
-    * @api private
-    * @method _arabicChar
-    * @param {String} value
-    * @return {Object} PersianJs Object
-    */
+     * Used for Zero-width non-joiner correction
+     *
+     * @api private
+     * @method _halfSpace
+     * @param {string} value
+     * @return {object} PersianJs object
+     */
+    function _halfSpace(value){
+        if(!value){
+            return;
+        }
+
+        var pattern;
+
+        // Replace Zero-width non-joiner between persian MI.
+        pattern = /((\s\u0645\u06CC)+( )+([\u0600-\u06EF]{1,}){1,})/g;
+        value = value.replace( new RegExp(pattern), "$2\u200C$4" );
+
+        // Replace Zero-width non-joiner between perisan De-Yii.
+        pattern = /(([\u0600-\u06EF]{1,})+( )+(ای|ایی|اند|ایم|اید|ام){1})/g;
+        value = value.replace( new RegExp(pattern), "$2\u200C$4" );
+
+        this._str = value;
+        return this;
+    }
+
+    /**
+     * Used for convert Arabic characters to Persian
+     *
+     * @api private
+     * @method _arabicChar
+     * @param {String} value
+     * @return {Object} PersianJs Object
+     */
     function _arabicChar(value) {
         if (!value) {
             return;
@@ -50,13 +77,13 @@
     }
 
     /**
-    * Used for Change keyboard layout
-    *
-    * @api private
-    * @method _switchKey
-    * @param {String} value
-    * @return {Object} PersianJs Object
-    */
+     * Used for Change keyboard layout
+     *
+     * @api private
+     * @method _switchKey
+     * @param {String} value
+     * @return {Object} PersianJs Object
+     */
     function _switchKey(value) {
         if (!value) {
             return;
@@ -72,13 +99,13 @@
     }
 
     /**
-    * Used for convert Arabic numbers to Persian
-    *
-    * @api private
-    * @method _arabicNumber
-    * @param {String} value
-    * @return {Object} PersianJs Object
-    */
+     * Used for convert Arabic numbers to Persian
+     *
+     * @api private
+     * @method _arabicNumber
+     * @param {String} value
+     * @return {Object} PersianJs Object
+     */
     function _arabicNumber(value) {
         if (!value) {
             return;
@@ -91,13 +118,13 @@
     }
 
     /**
-    * Used for convert English numbers to Persian
-    *
-    * @api private
-    * @method _englishNumber
-    * @param {String} value
-    * @return {Object} PersianJs Object
-    */
+     * Used for convert English numbers to Persian
+     *
+     * @api private
+     * @method _englishNumber
+     * @param {String} value
+     * @return {Object} PersianJs Object
+     */
     function _englishNumber(value) {
         if (!value) {
             return;
@@ -128,34 +155,14 @@
         return this;
     }
     
-    /**
-     * Used for Zero-width non-joiner correction
-     * @method _Zwjc
-     * @param {String} value
+	/**
+     * Used for convert Persian and Arabic numbers to English string
+     *
+     * @api private
+     * @method _toEnglishNumber
+     * @param {String} value 
      * @return {Object} PersianJs Object
      */
-    function _Zwjc(value) {
-        if (!value) {
-            return;
-        }
-        var emptyContent = ["\u0020"],
-            zwjc = ["\u200B\u200C\u200D\uFEFF"];
-
-        for (var i = 0, charsLen = emptyContent.length; i < charsLen; i++) {
-            value = value.replace(new RegExp(emptyContent[i], "g"), zwjc[i]);
-        }
-        this._str = value;
-        return this;
-    }
-	
-	/**
-    * Used for convert Persian and Arabic numbers to English string
-    *
-    * @api private
-    * @method _toEnglishNumber
-    * @param {String} value 
-    * @return {Object} PersianJs Object
-    */
     function _toEnglishNumber(value) {
         if (!value) {
             return;
@@ -169,14 +176,14 @@
     }
 
     /**
-    * Used for decode Persian Charachters in URL
-    * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
-    *
-    * @api private
-    * @method _decodeURL
-    * @param {String} value
-    * @return {Object} PersianJs Object
-    */
+     * Used for decode Persian Charachters in URL
+     * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
+     *
+     * @api private
+     * @method _decodeURL
+     * @param {String} value
+     * @return {Object} PersianJs Object
+     */
     function _decodeURL(value) {
         if (!value) {
             return;
@@ -200,13 +207,13 @@
     }
 
     /**
-    * Used for get persian words representation of a number
-    *
-    * @api private
-    * @method _digitsToWords
-    * @param {String} value
-    * @return {Object} PersianJs Object
-    */
+     * Used for get persian words representation of a number
+     *
+     * @api private
+     * @method _digitsToWords
+     * @param {String} value
+     * @return {Object} PersianJs Object
+     */
     function _digitsToWords(value) {
         var delimiter, digit, i, iThree, numbers, parts, result, resultThree, three;
 
@@ -283,11 +290,11 @@
     };
 
     /**
-    * Current PersianJs version
-    *
-    * @property version
-    * @type String
-    */
+     * Current PersianJs version
+     *
+     * @property version
+     * @type String
+     */
     persianJs.version = VERSION;
 
     //Prototype
@@ -329,11 +336,11 @@
         switchKey: function() {
             return _switchKey.call(this, this._str);
         },
-        Zwjc: function() {
-            return _Zwjc.call(this, this._str);
-        },
         digitsToWords: function() {
             return _digitsToWords.call(this, this._str);
+        },
+        halfSpace: function(){
+            return _halfSpace.call(this, this._str);
         }
     };
 
