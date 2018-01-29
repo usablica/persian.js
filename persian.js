@@ -108,6 +108,25 @@
         this._str = value;
         return this;
     }
+
+    /**
+     * @api private
+     * @method _persianNumber
+     * @param {String} value
+     * @return {Object} PersianJs Object
+     */
+    function _persianNumber(value) {
+        if (!value) {
+            return;
+        }
+    
+        for (var i = 0, numbersLen = englishNumbers.length; i < numbersLen; i++) {
+            value = value.replace(new RegExp(persianNumbers[i], "g"), englishNumbers[i]);
+        }
+    
+        this._str = value;
+        return this;
+    }
     
     /**
      * Used for Zero-width non-joiner correction
@@ -288,6 +307,9 @@
         },
         arabicChar: function() {
             return _arabicChar.call(this, this._str);
+        },
+        persianNumber: function () {
+            return _persianNumber.call(this, this._str);
         },
         arabicNumber: function() {
             return _arabicNumber.call(this, this._str);
