@@ -30,79 +30,97 @@
 
       </header>
       <section>
-        <p align="center"><img src="http://usabli.ca/persianjs/usablica-persianjs-logo300.png"></p>  
-
-<p>A simple JavaScript library for Persian language localization.<br><a href="https://travis-ci.org/usablica/persian.js"><img src="https://travis-ci.org/usablica/persian.js.png?branch=master" alt="Build Status"></a></p>
-
-<h2>How to use</h2>
-
-<p>Simply include <code>persian.js</code> in your HTML page and use the functions.<br>
+        <h1 class="center">Persian.js</h1>
+        <p>A simple JavaScript library for Persian language localization.
+          <br>
+          <a href="https://travis-ci.org/usablica/persian.js">
+            <img src="https://travis-ci.org/usablica/persian.js.svg?branch=master" alt="Build Status">
+          </a>
+        </p>
+        <h2>How to use</h2>
+        <p>Simply include <code>persian.js</code> in your HTML page and use the functions.<br>
 If your in production environment, use <code>persian.min.js</code> instead.</p>
-
 <h3>In Node.js</h3>
-
-<pre><code>npm install persianjs
-</code></pre>
+<pre><code>npm install persianjs</code></pre>
+<h3>In Bower</h3>
+<pre><code>bower install persianjs</code></pre>
 
 <h2>Functions</h2>
 
 <h3>1) Convert to Persian characters</h3>
-
-<hr><p>Used for converting Arabic characters to Persian.</p>
-
+<p>Used for converting Arabic characters to Persian</p>
 <p>Example:</p>
-
-<div class="highlight"><pre><span class="nx">persianJs</span><span class="p">(</span><span class="s2">"علي"</span><span class="p">).</span><span class="nx">toPersianChar</span><span class="p">();</span> <span class="c1">//returns: علی</span>
+<div class="highlight">
+  <pre><span class="nx">persianJs</span><span class="p">(</span><span class="s2">"علي"</span><span class="p">).</span><span class="nx">toPersianChar</span><span class="p">();</span> <span class="c1">// returns: علی</span>
 </pre></div>
 
-<h3>2) Convert to Persian numbers</h3>
 
-<hr><p>Used for converting Arabic numbers to Persian.</p>
-
+<h3>2) Convert to English numbers from Persian Number</h3>
+<p>Used for converting Persian numbers to English.</p>
 <p>Example:</p>
-
-<div class="highlight"><pre><span class="nx">persianJs</span><span class="p">(</span><span class="s2">"٣٤٥"</span><span class="p">).</span><span class="nx">toPersianNumber</span><span class="p">();</span> <span class="c1">//returns: ۳۴۵</span>
+<div class="highlight"><pre><span class="nx">persianJs</span><span class="p">(</span><span class="s2">"۳۴۵"</span><span class="p">).</span><span class="nx">persianNumber</span><span class="p">();</span> <span class="c1">// returns: ۳۴۵</span>
 </pre></div>
 
-<h3>3) ?</h3>
 
-<hr><p>We're completing <strong>persian.js</strong>, if you need other functionalities, please create a issue on this repository and let us know that.<br>
+<h3>3) Convert to Persian numbers from Arabic Number</h3>
+<p>Used for converting Arabic numbers to Persian.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span class="nx">persianJs</span><span class="p">(</span><span class="s2">"٣٤٥"</span><span class="p">).</span><span class="nx">arabicNumber</span><span class="p">();</span> <span class="c1">// returns: ۳۴۵</span>
+</pre></div>
+
+
+<h3>4) Convert to Persian numbers from English Number</h3>
+<p>Used for converting English numbers to Persian.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span class="nx">persianJs</span><span class="p">(</span><span class="s2">"345"</span><span class="p">).</span><span class="nx">englishNumber</span><span class="p">();</span> <span class="c1">// returns: ۳۴۵</span>
+</pre></div>
+
+
+<h3>5) Convert to English numbers from Arabic and Persian Number</h3>
+<p>Used for converting Arabic and Persian numbers to English.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span class="nx">persianJs</span><span class="p">(</span><span class="s2">"٣٤٥"</span><span class="p">).</span><span class="nx">toEnglishNumber</span><span class="p">();</span> <span class="c1">// returns: 345</span>
+</pre></div>
+
+
+<h3>6) Decode Percent-encoding Characters in URLs</h3>
+<p>Used to convert unreadable Persian characters in URL to readable characters.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span class="nx">persianJs</span><span class="p">(</span><span class="s2">"https://fa.wikipedia.org/wiki/%D8%B5%D9%81%D8%AD%D9%87%D9%94_%D8%A7%D8%B5%D9%84%DB%8C"</span><span class="p">).</span><span class="nx">decodeURL</span><span class="p">();</span> <span class="c1">//returns https://fa.wikipedia.org/wiki/صفحهٔ_اصلی</span>
+</pre></div>
+
+
+<h3>7) Change keyboard layout</h3>
+<p>Used for converting Persian char to English char.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span class="nx">persianJs</span><span class="p">(</span><span class="s2">"لخخلمث"</span><span class="p">).</span><span class="nx">switchKey</span><span class="p">();</span> <span class="c1">// returns: google</span>
+</pre></div>
+
+
+<h3>8) Convert numbers to words</h3>
+<p>Used for representing numbers as Persian words.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span class="nx">persianJs</span><span class="p">(</span><span class="s2">"1372"</span><span class="p">).</span><span class="nx">digitsToWords</span><span class="p">();</span> <span class="c1">// returns: یک هزار و سیصد و هفتاد و دو</span>
+</pre></div>
+
+
+<h3>9) Zero-width non-joiner correction</h3>
+<p>Example:</p>
+<div class="highlight"><pre><span class="nx">persianJs</span><span class="p">(</span><span class="s2">"آمده ای ولی من رفته ام و می آییم"</span><span class="p">).</span><span class="nx">halfSpace</span><span class="p">();</span> <span class="c1">// returns: آمده‌ای ولی من رفته‌ام و می‌آییم</span>
+</pre></div>
+
+
+<h3>10) ?</h3>
+
+<hr><p>We're completing <strong>persian.js</strong>, if you need other functionalities, please create a <a href="https://github.com/usablica/persian.js/issues">issue</a> on this repository and let us know that.<br>
 We will implement that as soon as possible!</p>
 
 <h2>Roadmap</h2>
 
 <ul>
-<li>Convert English numbers to Persian</li>
-<li>Zero-width non-joiner correction (e.g. convert می خواهم to می‌خواهم)</li>
 <li>Make library configurable (e.g. setting the language)</li>
-<li>Complete unit tests</li>
 <li>Add <code>uglifyjs</code> to MakeFile in order to make <code>.min</code> version of script (Related to issue #7)</li>
-</ul><h2>Contributors</h2>
-
-<ul>
-<li>
-<a href="http://afshinm.name/">Afshin Mehrabani</a><br>
-</li>
-<li>
-<a href="http://sallar.me/">Sallar Kaboli</a><br>
-</li>
-<li>
-<a href="http://netso.io/">Armin Ebrahimi</a><br>
-</li>
-<li>
-<a href="http://blog.phpmystery.com/">Nima Shayafar</a><br>
-</li>
-<li>
-<a href="http://soheilrashidi.com/">Soheil Rashidi</a><br>
-</li>
-<li>
-<a href="http://bersam.org">Bersam Karbasion</a><br>
-</li>
-<li><a href="https://github.com/salisa">Ali Sadattalab</a></li>
-</ul><h3>Special Thanks</h3>
-
-<p>To <a href="http://ehsanfar.com/">Ali Ehsanfar</a> for Logo design.</p>
-
+</ul>
 <h2>Contributing</h2>
 
 <p>This is a open-source project. Fork the project, complete the code and send pull request.</p>
