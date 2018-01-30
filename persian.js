@@ -1,5 +1,5 @@
 ﻿/**
- * PersianJs v0.3.0
+ * PersianJs v0.4.0
  * https://github.com/usablica/persian.js
  * MIT licensed
  *
@@ -7,17 +7,16 @@
  */
 (function () {
 
-    //Default config/variables
-    var VERSION = "0.3.0",
-        //Check for nodeJS
+    // Default config/variables
+    var VERSION = "0.4.0",
+        // Check for nodeJS
         hasModule = (typeof module !== 'undefined' && module.exports);
 	
-	//Declare Number Arrays in different locales
+	// Declare Number Arrays in different locales
 	var arabicNumbers  = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "٠"],
 		persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"], 
 		englishNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-        
-
+       
     /**
      * PersianJs main class
      *
@@ -25,33 +24,6 @@
      */
     function PersianJs(str) {
         this._str = str;
-    }
-
-    /**
-     * Used for Zero-width non-joiner correction
-     *
-     * @api private
-     * @method _halfSpace
-     * @param {string} value
-     * @return {object} PersianJs object
-     */
-    function _halfSpace(value){
-        if(!value){
-            return;
-        }
-
-        var pattern;
-
-        // Replace Zero-width non-joiner between persian MI.
-        pattern = /((\s\u0645\u06CC)+( )+([\u0600-\u06EF]{1,}){1,})/g;
-        value = value.replace( new RegExp(pattern), "$2\u200C$4" );
-
-        // Replace Zero-width non-joiner between perisan De-Yii.
-        pattern = /(([\u0600-\u06EF]{1,})+( )+(ای|ایی|اند|ایم|اید|ام){1})/g;
-        value = value.replace( new RegExp(pattern), "$2\u200C$4" );
-
-        this._str = value;
-        return this;
     }
 
     /**
@@ -77,23 +49,22 @@
     }
 
     /**
-     * Used for Change keyboard layout
-     *
+     * Used for convert Persian numbers to English
+     * 
      * @api private
-     * @method _switchKey
+     * @method _persianNumber
      * @param {String} value
      * @return {Object} PersianJs Object
      */
-    function _switchKey(value) {
+    function _persianNumber(value) {
         if (!value) {
             return;
         }
-        var persianChar = [ "ض", "ص", "ث", "ق", "ف", "غ", "ع", "ه", "خ", "ح", "ج", "چ", "ش", "س", "ی", "ب", "ل", "ا", "ت", "ن", "م", "ک", "گ", "ظ", "ط", "ز", "ر", "ذ", "د", "پ", "و","؟" ],
-            englishChar = [ "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", "z", "x", "c", "v", "b", "n", "m", ",","?" ];
-
-        for (var i = 0, charsLen = persianChar.length; i < charsLen; i++) {
-            value = value.replace(new RegExp(persianChar[i], "g"), englishChar[i]);
+    
+        for (var i = 0, numbersLen = englishNumbers.length; i < numbersLen; i++) {
+            value = value.replace(new RegExp(persianNumbers[i], "g"), englishNumbers[i]);
         }
+    
         this._str = value;
         return this;
     }
@@ -111,8 +82,6 @@
             return;
         }
         value=value.toString();
-        var arabicNumbers = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "٠"],
-            persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"];
 
         for (var i = 0, numbersLen = arabicNumbers.length; i < numbersLen; i++) {
             value = value.replace(new RegExp(arabicNumbers[i], "g"), persianNumbers[i]);
@@ -140,25 +109,6 @@
         for (var i = 0, numbersLen = englishNumbers.length; i < numbersLen; i++) {
             value = value.replace(new RegExp(englishNumbers[i], "g"), persianNumbers[i]);
         }
-        this._str = value;
-        return this;
-    }
-
-    /**
-     * @api private
-     * @method _persianNumber
-     * @param {String} value
-     * @return {Object} PersianJs Object
-     */
-    function _persianNumber(value) {
-        if (!value) {
-            return;
-        }
-    
-        for (var i = 0, numbersLen = englishNumbers.length; i < numbersLen; i++) {
-            value = value.replace(new RegExp(persianNumbers[i], "g"), englishNumbers[i]);
-        }
-    
         this._str = value;
         return this;
     }
@@ -210,6 +160,28 @@
         });
         // Revive all instances of %20 to make sure no links is broken
         value = value.replace(/\u200c\u200c\u200c_\u200c\u200c\u200c/g, '%20');
+        this._str = value;
+        return this;
+    }
+
+    /**
+     * Used for Change keyboard layout
+     *
+     * @api private
+     * @method _switchKey
+     * @param {String} value
+     * @return {Object} PersianJs Object
+     */
+    function _switchKey(value) {
+        if (!value) {
+            return;
+        }
+        var persianChar = [ "ض", "ص", "ث", "ق", "ف", "غ", "ع", "ه", "خ", "ح", "ج", "چ", "ش", "س", "ی", "ب", "ل", "ا", "ت", "ن", "م", "ک", "گ", "ظ", "ط", "ز", "ر", "ذ", "د", "پ", "و","؟" ],
+            englishChar = [ "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", "z", "x", "c", "v", "b", "n", "m", ",","?" ];
+
+        for (var i = 0, charsLen = persianChar.length; i < charsLen; i++) {
+            value = value.replace(new RegExp(persianChar[i], "g"), englishChar[i]);
+        }
         this._str = value;
         return this;
     }
@@ -290,6 +262,33 @@
         return this;
     }
 
+    /**
+     * Used for Zero-width non-joiner correction
+     *
+     * @api private
+     * @method _halfSpace
+     * @param {string} value
+     * @return {object} PersianJs object
+     */
+    function _halfSpace(value){
+        if(!value){
+            return;
+        }
+
+        var pattern;
+
+        // Replace Zero-width non-joiner between persian MI.
+        pattern = /((\s\u0645\u06CC)+( )+([\u0600-\u06EF]{1,}){1,})/g;
+        value = value.replace( new RegExp(pattern), "$2\u200C$4" );
+
+        // Replace Zero-width non-joiner between perisan De-Yii.
+        pattern = /(([\u0600-\u06EF]{1,})+( )+(ای|ایی|اند|ایم|اید|ام){1})/g;
+        value = value.replace( new RegExp(pattern), "$2\u200C$4" );
+
+        this._str = value;
+        return this;
+    }
+
     var persianJs = function(inputStr) {
         if (!inputStr || inputStr === "") {
             throw new Error("Input is null or empty.");
@@ -329,18 +328,18 @@
         arabicNumber: function() {
             return _arabicNumber.call(this, this._str);
         },
+        englishNumber: function() {
+            return _englishNumber.call(this, this._str);
+        },
+        toEnglishNumber: function() {
+            return _toEnglishNumber.call(this, this._str);
+        },
         fixURL: function() {
             return _decodeURL.call(this, this._str);
         },
         decodeURL: function() {
             return _decodeURL.call(this, this._str);
         },
-        englishNumber: function() {
-            return _englishNumber.call(this, this._str);
-        },
-		toEnglishNumber: function() {
-			return _toEnglishNumber.call(this, this._str);
-		},
         switchKey: function() {
             return _switchKey.call(this, this._str);
         },

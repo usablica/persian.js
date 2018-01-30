@@ -15,98 +15,97 @@ npm install persianjs
 bower install persianjs
 ```
 
-##Functions
+## Functions
 
-###1) Convert to Persian characters
-----------
+### 1) Convert to Persian characters
 Used for converting Arabic characters to Persian.
-
 Example:
-
 ```javascript
 persianJs("علي").arabicChar().toString(); //returns: علی
-````
+```
 
-###2) Convert to Persian numbers from Arabic Number
+### 2) Convert to English numbers from Persian Number
 ----------
-Used for converting Arabic numbers to Persian.
-
+Used for converting Persian numbers to English.
 Example:
+```javascript
+persianJs("۳۴۵").persianNumber().toString(); //returns: 345
+```
 
+### 3) Convert to Persian numbers from Arabic Number
+Used for converting Arabic numbers to Persian.
+Example:
 ```javascript
 persianJs("٣٤٥").arabicNumber().toString(); //returns: ۳۴۵
-````
-###3) Convert to Persian numbers from English Number
+```
+
+### 4) Convert to Persian numbers from English Number
 ----------
 Used for converting English numbers to Persian.
-
 Example:
-
 ```javascript
 persianJs("345").englishNumber().toString(); //returns: ۳۴۵
-````
-###4) Decode Percent-encoding Characters in URLs
+```
+
+### 5) Convert to English numbers from Arabic and Persian Number
+Used for converting Arabic and Persian numbers to English.
+Example:
+```javascript
+persianJs("٣٤٥").toEnglishNumber().toString(); //returns: 345
+```
+
+### 6) Decode Percent-encoding Characters in URLs
 ----------
 Used to convert unreadable Persian characters in URL to readable characters.
-
 Example:
-
 ```javascript
 persianJs("https://fa.wikipedia.org/wiki/%D8%B5%D9%81%D8%AD%D9%87%D9%94_%D8%A7%D8%B5%D9%84%DB%8C").fixURL().toString(); //returns https://fa.wikipedia.org/wiki/صفحهٔ_اصلی
-````
-###5) Change keyboard layout
+```
+
+### 7) Change keyboard layout
 ----------
 Used for converting Persian char to English char.
-
 Example:
-
 ```javascript
-
 persianJs("لخخلمث").switchKey().toString(); //returns: google
-````
-###6) Convert numbers to words
+```
+
+### 8) Convert numbers to words
 ----------
 Used for representing numbers as Persian words.
 ```javascript
 persianJs("1372").digitsToWords().toString(); //returns: یک هزار و سیصد و هفتاد و دو
-````
+```
 
-
-###6) Zero-width non-joiner correction
+### 9) Zero-width non-joiner correction
 ----------
 Example:
-
 ```javascript
-
 persianJs("آمده ای ولی من رفته ام و می آییم").halfSpace().toString(); //returns: آمده‌ای ولی من رفته‌ام و می‌آییم
-````
+```
 
-###Chainable using
+### Chainable using
 ----------
 You can use all of the functions together with one PersianJs instance (in v0.3):
-
 Example:
-
 ```javascript
-
 persianJs("علي٤2465").arabicChar().englishNumber().arabicNumber().toString(); //returns: علی۴۲۴۶۵
-````
+```
 
-
-##Roadmap
+## Roadmap
 - Make library configurable (e.g. setting the language)
 - Add `uglifyjs` to MakeFile in order to make `.min` version of script (Related to issue #7)
 
-##Contributing
+## Contributing
 
 This is a open-source project. Fork the project, complete the code and send pull request.
 
-##Getting support
+## Getting support
 
 - Google Groups [forum](http://groups.google.com/group/persianJs)
 - Report [bug/issues](https://github.com/usablica/persian.js/issues)
 
-##License
+## License
 
     Copyright (C) 2012 Afshin Mehrabani (afshin.meh@gmail.com)
 
