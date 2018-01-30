@@ -97,20 +97,6 @@ persianJs("علي٤2465").arabicChar().englishNumber().arabicNumber().toString()
 - Make library configurable (e.g. setting the language)
 - Add `uglifyjs` to MakeFile in order to make `.min` version of script (Related to issue #7)
 
-##Main Contributors
-- [Afshin Mehrabani](http://afshinm.name/)
-- [Sallar Kaboli](http://sallar.me/)
-- [Armin Ebrahimi](http://netso.io/)
-- [Nima Shayafar](http://blog.phpmystery.com/)
-- [Soheil Rashidi](http://soheilrashidi.com/)
-- [Bersam Karbasion](http://bersam.org)
-- [Ali Sadattalab](https://github.com/salisa)
-
-other conributors: https://github.com/usablica/persian.js/contributors
-
-###Special Thanks
-To [Ali Ehsanfar](http://ehsanfar.com/) for Logo design.
-
 ##Contributing
 
 This is a open-source project. Fork the project, complete the code and send pull request.
