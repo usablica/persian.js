@@ -244,7 +244,7 @@
                 })();
 
                 resultThree = resultThree.join(delimiter);
-		var _result = resultThree ? resultThree + ' ' + parts[valueParts.length - parseInt(iThree) - 1] : resultThree;
+                var _result = resultThree ? resultThree + ' ' + parts[valueParts.length - parseInt(iThree) - 1] : resultThree;
                 _results.push(_result);
             }
             return _results;
