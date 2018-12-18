@@ -53,7 +53,7 @@ Example:
 persianJs("345").englishNumber().toString(); //returns: ۳۴۵
 ```
 
-### 5) Convert to English numbers from Arabic and Persian Number
+### 5) Convert to English numbers from Arabic Number
 ----------
 Used for converting Arabic and Persian numbers to English.
 
