@@ -22,7 +22,9 @@
         "i18n",
         "l10n"
     ],
-    "main": "persian",
+    "source": "persian.js",
+    "main": "dist/persian.min.js",
+    "unpkg": "dist/persian.umd.js",
     "engines": {
         "node": "*"
     },
@@ -33,16 +35,23 @@
     "bugs": {
         "url": "https://github.com/usablica/persian.js/issues"
     },
-    "licenses": [
-        {
-            "type": "MIT"
-        }
-    ],
+    "licenses": [{
+        "type": "MIT"
+    }],
     "devDependencies": {
+        "husky": "^4.2.5",
+        "microbundle": "^0.12.3",
         "mocha": "*"
     },
     "scripts": {
-        "test": "make test"
+        "test": "make test",
+        "build": "microbundle",
+        "dev": "microbundle watch"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm test  && npm run build"
+        }
     },
     "ender": "./ender.js"
 }
