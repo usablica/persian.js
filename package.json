@@ -35,11 +35,9 @@
     "bugs": {
         "url": "https://github.com/usablica/persian.js/issues"
     },
-    "licenses": [
-        {
-            "type": "MIT"
-        }
-    ],
+    "licenses": [{
+        "type": "MIT"
+    }],
     "devDependencies": {
         "husky": "^4.2.5",
         "microbundle": "^0.12.3",
