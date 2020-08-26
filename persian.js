@@ -38,8 +38,8 @@
         if (!value) {
             return;
         }
-        var arabicChars = ["ي", "ك", "‍", "دِ", "بِ", "زِ", "ذِ", "ِشِ", "ِسِ", "ى"],
-            persianChars = ["ی", "ک", "", "د", "ب", "ز", "ذ", "ش", "س", "ی"];
+        var arabicChars = ["ي", "ك", "‍", "دِ", "بِ", "زِ", "ذِ", "ِشِ", "ِسِ", "ى","ة"],
+            persianChars = ["ی", "ک", "", "د", "ب", "ز", "ذ", "ش", "س", "ی","ه"];
 
         for (var i = 0, charsLen = arabicChars.length; i < charsLen; i++) {
             value = value.replace(new RegExp(arabicChars[i], "g"), persianChars[i]);
