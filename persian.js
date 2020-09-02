@@ -61,7 +61,7 @@
             return;
         }
 
-        for (let i in englishNumbers) {
+        for (var i = 0, numbersLen = englishNumbers.length; i < numbersLen; i++) {
             value = value.replace(new RegExp(persianNumbers[i], "g"), englishNumbers[i]);
         }
 
