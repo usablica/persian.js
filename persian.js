@@ -11,12 +11,12 @@
     var VERSION = "0.4.0",
         // Check for nodeJS
         hasModule = (typeof module !== 'undefined' && module.exports);
-	
+
 	// Declare Number Arrays in different locales
 	var arabicNumbers  = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "٠"],
-		persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"], 
+		persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"],
 		englishNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-       
+
     /**
      * PersianJs main class
      *
@@ -50,7 +50,7 @@
 
     /**
      * Used for convert Persian numbers to English
-     * 
+     *
      * @api private
      * @method _persianNumber
      * @param {String} value
@@ -60,11 +60,11 @@
         if (!value) {
             return;
         }
-    
+
         for (var i = 0, numbersLen = englishNumbers.length; i < numbersLen; i++) {
             value = value.replace(new RegExp(persianNumbers[i], "g"), englishNumbers[i]);
         }
-    
+
         this._str = value;
         return this;
     }
@@ -99,7 +99,7 @@
      * @return {Object} PersianJs Object
      */
     function _englishNumber(value) {
-        if (!value) {
+        if (!value && value !==0) {
             return;
         }
         value=value.toString();
@@ -112,13 +112,13 @@
         this._str = value;
         return this;
     }
-    
+
 	/**
      * Used for convert Persian and Arabic numbers to English string
      *
      * @api private
      * @method _toEnglishNumber
-     * @param {String} value 
+     * @param {String} value
      * @return {Object} PersianJs Object
      */
     function _toEnglishNumber(value) {
@@ -291,7 +291,7 @@
     }
 
     var persianJs = function(inputStr) {
-        if (!inputStr || inputStr === "") {
+        if (!inputStr && inputStr !== 0 || inputStr === "" ) {
             throw new Error("Input is null or empty.");
         }
         return new PersianJs(inputStr);
