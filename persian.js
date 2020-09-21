@@ -11,12 +11,12 @@
     var VERSION = "0.4.0",
         // Check for nodeJS
         hasModule = (typeof module !== 'undefined' && module.exports);
-	
+
 	// Declare Number Arrays in different locales
 	var arabicNumbers  = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "٠"],
-		persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"], 
+		persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"],
 		englishNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-       
+
     /**
      * PersianJs main class
      *
@@ -50,7 +50,7 @@
 
     /**
      * Used for convert Persian numbers to English
-     * 
+     *
      * @api private
      * @method _persianNumber
      * @param {String} value
@@ -60,11 +60,11 @@
         if (!value) {
             return;
         }
-    
+
         for (var i = 0, numbersLen = englishNumbers.length; i < numbersLen; i++) {
             value = value.replace(new RegExp(persianNumbers[i], "g"), englishNumbers[i]);
         }
-    
+
         this._str = value;
         return this;
     }
@@ -112,13 +112,13 @@
         this._str = value;
         return this;
     }
-    
+
 	/**
      * Used for convert Persian and Arabic numbers to English string
      *
      * @api private
      * @method _toEnglishNumber
-     * @param {String} value 
+     * @param {String} value
      * @return {Object} PersianJs Object
      */
     function _toEnglishNumber(value) {
@@ -195,7 +195,9 @@
      * @return {Object} PersianJs Object
      */
     function _digitsToWords(value) {
-        var delimiter, digit, i, iThree, numbers, parts, result, resultThree, three;
+        var delimiter, digit, i, iThree, numbers, parts, result, resultThree, three, valueInt, valueDec;
+
+        value = value.replace(/,(?=.*\.\d+)/g, '');
 
         if (!isFinite(value)) {
             return '';
@@ -204,6 +206,8 @@
         if (typeof value !== "string") {
             value = value.toString();
         }
+        valueInt = value.split(".")[0];
+        valueDec = value.split(".")[1];
 
         parts = ['', 'هزار', 'میلیون', 'میلیارد', 'تریلیون', 'کوادریلیون', 'کویینتیلیون', 'سکستیلیون'];
         numbers = {
@@ -214,8 +218,7 @@
             zero: 'صفر'
         };
         delimiter = ' و ';
-
-        valueParts = value.split('').reverse().join('').replace(/\d{3}(?=\d)/g, "$&,").split('').reverse().join('').split(',').map(function(str) {
+        valueParts = valueInt.split('').reverse().join('').replace(/\d{3}(?=\d)/g, "$&,").split('').reverse().join('').split(',').map(function(str) {
             return Array(4 - str.length).join('0') + str;
         });
 
@@ -257,6 +260,11 @@
         result = result.join(delimiter).trim();
         if (result === '') {
             result = numbers.zero;
+        }
+
+        if(valueDec) {
+            result += ' ممیز ';
+            result += _digitsToWords(valueDec)._str;
         }
 
         this._str = result;
