@@ -1,57 +1,60 @@
 {
-    "name": "persianjs",
-    "version": "0.4.0",
-    "description": "Persian language localization.",
-    "homepage": "https://github.com/usablica/persian.js",
-    "author": "Afshin Mehrabani <afshin.meh@gmail.com> (http://afshinm.name/)",
-    "contributors": [
-        "Sallar Kaboli (http://sallar.me/)",
-        "Armin Ebrahimi (http://netso.io/)",
-        "Nima Shayafar (http://blog.phpmystery.com/)",
-        "Soheil Rashidi (http://soheilrashidi.com/)",
-        "Bersam Karbasion (http://bersam.org/)",
-        "Ali Sadattalab (https://github.com/salisa/)"
-    ],
-    "keywords": [
-        "persian",
-        "farsi",
-        "arabic",
-        "english",
-        "culture",
-        "localization",
-        "i18n",
-        "l10n"
-    ],
-    "source": "persian.js",
-    "main": "dist/persian.min.js",
-    "unpkg": "dist/persian.umd.js",
-    "engines": {
-        "node": "*"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/usablica/persian.js.git"
-    },
-    "bugs": {
-        "url": "https://github.com/usablica/persian.js/issues"
-    },
-    "licenses": [{
-        "type": "MIT"
-    }],
-    "devDependencies": {
-        "husky": "^4.2.5",
-        "microbundle": "^0.12.3",
-        "mocha": "*"
-    },
-    "scripts": {
-        "test": "make test",
-        "build": "microbundle",
-        "dev": "microbundle watch"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "npm test  && npm run build"
-        }
-    },
-    "ender": "./ender.js"
+  "name": "persianjs",
+  "version": "0.4.0",
+  "description": "Persian language localization.",
+  "homepage": "https://github.com/usablica/persian.js",
+  "author": "Afshin Mehrabani <afshin.meh@gmail.com> (http://afshinm.name/)",
+  "contributors": [
+    "Sallar Kaboli (http://sallar.me/)",
+    "Armin Ebrahimi (http://netso.io/)",
+    "Nima Shayafar (http://blog.phpmystery.com/)",
+    "Soheil Rashidi (http://soheilrashidi.com/)",
+    "Bersam Karbasion (http://bersam.org/)",
+    "Ali Sadattalab (https://github.com/salisa/)",
+    "Soroush Kheirkhah (https://mrkheirkhah.com/aboutme)"
+  ],
+  "keywords": [
+    "persian",
+    "farsi",
+    "arabic",
+    "english",
+    "culture",
+    "localization",
+    "i18n",
+    "l10n"
+  ],
+  "source": "persian.js",
+  "main": "dist/persian.min.js",
+  "unpkg": "dist/persian.umd.js",
+  "engines": {
+    "node": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/usablica/persian.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/usablica/persian.js/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "microbundle": "^0.12.3",
+    "mocha": "*"
+  },
+  "scripts": {
+    "test": "mocha",
+    "build": "microbundle",
+    "dev": "microbundle watch"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test  && npm run build"
+    }
+  },
+  "ender": "./ender.js"
 }
