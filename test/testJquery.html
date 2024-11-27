@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="../jquery.persian.js" type="text/javascript"></script>
+		<script>
+			$(function(){
+				$("#txtOne,#txtTwo").persian();
+				$("#txtThree").persian("toPersianNumber");
+			});
+		</script>
+	</head>
+	<body>
+		<input type="text" value="1234567890" id="txtOne"/>
+		<input type="text" value="1234567890" id="txtTwo"/>
+		<input type="text" value="٥" id="txtThree"/>
+	</body>
+</html>
